@@ -31,9 +31,14 @@ public class AboutPage {
         return driver;
     }
 
-    public AndroidDriver checkAboutPageInfo() {
+    public AndroidDriver checkAboutPageInfo() throws NullPointerException{
 
+        String ExpEventName = driver.findElement(By.xpath("")).getText();
+        String ExpEventDate = driver.findElement(By.xpath("")).getText();
+        String ExpEventLocation = driver.findElement(By.xpath("")).getText();
+        String ExpEventDescription = driver.findElement(By.xpath("")).getText();
 
+        driver.findElement(By.xpath("")) ;
 
         return driver;
     }

@@ -4,8 +4,8 @@ public class ConfigsAndTexts {
 
     String EventName;
     String EventDate;
-    String AboutDescription;
-    String AboutAdress;
+    String EventDescription;
+    String EventAdress;
 
 
 }
