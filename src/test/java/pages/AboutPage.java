@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import scenarios.ConfigsAndTexts;
 
 import java.net.MalformedURLException;
 
@@ -33,12 +34,44 @@ public class AboutPage {
 
     public AndroidDriver checkAboutPageInfo() throws NullPointerException{
 
-        String ExpEventName = driver.findElement(By.xpath("")).getText();
-        String ExpEventDate = driver.findElement(By.xpath("")).getText();
-        String ExpEventLocation = driver.findElement(By.xpath("")).getText();
-        String ExpEventDescription = driver.findElement(By.xpath("")).getText();
+        String ExpEventName = new ConfigsAndTexts().setExpEventName();
+        String ExpEventDate = new ConfigsAndTexts().setExpEventDate();
+        String ExpEventDescription = new ConfigsAndTexts().setExpEventDescription();
+        String ExpEventLocation = new ConfigsAndTexts().setExpEventLocation();
 
-        driver.findElement(By.xpath("")) ;
+        String ActEventName = driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/titleTextView")).getText();
+        String ActEventDate = driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/datesTextView")).getText();
+        String ActEventDescription = driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/descriptionTextView")).getText();
+        String ActEventLocation = driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).getText();
+
+
+        System.out.println("Comparing Expected and Actual Names");
+        if (ActEventName.equals(ExpEventName)) {
+            System.out.println("Event name is correct ");
+        } else {
+            System.out.println("!!! Event Name is incorrect ");
+        }
+
+        System.out.println("Comparing Expected and Actual Date");
+        if (ActEventDate.equals(ExpEventDate)) {
+            System.out.println("Event date is correct ");
+        } else {
+            System.out.println("!!! Event Date is incorrect ");
+        }
+
+        System.out.println("Comparing Expected and Actual Location");
+        if (ActEventLocation.equals(ExpEventLocation)) {
+            System.out.println("Event location is correct ");
+        } else {
+            System.out.println("!!! Event Location is incorrect ");
+        }
+
+        System.out.println("Comparing Expected and Actual Description");
+        if (ActEventDescription.equals(ExpEventDescription)) {
+            System.out.println("Event description is correct ");
+        } else {
+            System.out.println("!!! Event Description is incorrect ");
+        }
 
         return driver;
     }
