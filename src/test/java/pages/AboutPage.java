@@ -56,7 +56,7 @@ public class AboutPage {
         if (ActEventDate.equals(ExpEventDate)) {
             System.out.println("Event date is correct");
         } else {
-            System.out.println("!!! Something wrong withEvent Date");
+            System.out.println("!!! Something wrong with Event Date");
         }
 
         System.out.println("3) Comparing Expected and Actual Location");
@@ -75,6 +75,18 @@ public class AboutPage {
 
         return driver;
     }
+        //Finish shis method, pidor
+        public AndroidDriver checkLocationLink() throws NullPointerException {
 
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        String Exp;
+
+
+        driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).click();
+        wait.until(ExpectedConditions.visibilityOf(MapPage.MapPageTitle));
+
+
+        return driver;
+        }
 
 }
