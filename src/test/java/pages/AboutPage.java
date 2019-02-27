@@ -45,32 +45,32 @@ public class AboutPage {
         String ActEventLocation = driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).getText();
 
 
-        System.out.println("Comparing Expected and Actual Names");
+        System.out.println("1) Comparing Expected and Actual Names");
         if (ActEventName.equals(ExpEventName)) {
-            System.out.println("Event name is correct ");
+            System.out.println("Event name is correct");
         } else {
-            System.out.println("!!! Event Name is incorrect ");
+            System.out.println("!!! Something wrong with Event Name");
         }
 
-        System.out.println("Comparing Expected and Actual Date");
+        System.out.println("2) Comparing Expected and Actual Date");
         if (ActEventDate.equals(ExpEventDate)) {
-            System.out.println("Event date is correct ");
+            System.out.println("Event date is correct");
         } else {
-            System.out.println("!!! Event Date is incorrect ");
+            System.out.println("!!! Something wrong withEvent Date");
         }
 
-        System.out.println("Comparing Expected and Actual Location");
+        System.out.println("3) Comparing Expected and Actual Location");
         if (ActEventLocation.equals(ExpEventLocation)) {
-            System.out.println("Event location is correct ");
+            System.out.println("Event location is correct");
         } else {
-            System.out.println("!!! Event Location is incorrect ");
+            System.out.println("!!! Something wrong with Event Location");
         }
 
-        System.out.println("Comparing Expected and Actual Description");
+        System.out.println("4) Comparing Expected and Actual Description");
         if (ActEventDescription.equals(ExpEventDescription)) {
-            System.out.println("Event description is correct ");
+            System.out.println("Event description is correct");
         } else {
-            System.out.println("!!! Event Description is incorrect ");
+            System.out.println("!!! Something wrong with Event Description");
         }
 
         return driver;
