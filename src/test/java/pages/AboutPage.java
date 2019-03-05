@@ -79,7 +79,7 @@ public class AboutPage {
         public AndroidDriver checkLocationLink() throws NullPointerException {
 
         WebDriverWait wait = new WebDriverWait(driver, 60);
-        String ExpPageTitle = MapPage.MapPageTitle.getText();
+        String ActMapPageTitle = MapPage.getActMapPageTitle();
 
 
         driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).click();
