@@ -17,7 +17,7 @@ public class SpeakersPage {
         }
 */
 
-/*
+
 //Reusable stuff! Add correct XPATH
 public static WebElement SpeakersPageTitle = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));
 
@@ -25,6 +25,6 @@ public static WebElement SpeakersPageTitle = driver.findElement(By.xpath("/hiera
         String ActPageTitle = SpeakersPageTitle.getText();
         return ActPageTitle;
     }
-*/
+
 
 }

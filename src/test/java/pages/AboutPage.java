@@ -16,7 +16,12 @@ import static scenarios.MasterTest.driver;
 public class AboutPage {
 
 
+    public static AndroidElement AboutPageTitle = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));
 
+    public static String getActAboutPageTitle () {
+        String ActPageTitle = AboutPageTitle.getText();
+        return ActPageTitle;
+    }
 
 
     public AndroidDriver openAboutPage() throws MalformedURLException, NullPointerException {

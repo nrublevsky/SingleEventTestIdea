@@ -1,17 +1,22 @@
 package pages;
 
+import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.By;
+
+import static scenarios.MasterTest.driver;
+
 public class AgendaPage {
 
 
 
-    /*
-//Reusable stuff! Add correct XPATH and edit names
-public static WebElement SpeakersPageTitle = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));
 
-    public static String getActSpeakersPageTitle () {
-        String ActPageTitle = SpeakersPageTitle.getText();
+//Reusable stuff! Add correct XPATH and edit names
+public static AndroidElement AgendaPageTitle = (AndroidElement) driver.findElement(By.xpath(" "));
+
+    public static String getActAgendaPageTitle () {
+        String ActPageTitle = AgendaPageTitle.getText();
         return ActPageTitle;
     }
-*/
+
 
 }
