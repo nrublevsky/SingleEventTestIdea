@@ -46,9 +46,10 @@ public class MasterTest {
 //    }
 //
     @Test
-    public void TCase1() throws MalformedURLException, NullPointerException,InterruptedException {
+    public void TCase1() throws MalformedURLException, NullPointerException {
         System.out.println("Testing About page");
         driver = new AboutPage().openAboutPage();
+        driver = new AboutPage().checkPageTitle();
         driver = new AboutPage().checkAboutPageInfo();
         driver = new AboutPage().checkLocationLink();
     }

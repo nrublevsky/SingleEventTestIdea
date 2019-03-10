@@ -11,28 +11,35 @@ import scenarios.ConfigsAndTexts;
 
 import java.net.MalformedURLException;
 
+import static pages.PageTitles.ExpAboutPageTitle;
 import static scenarios.MasterTest.driver;
 
 public class AboutPage {
 
 
-//    public  AndroidElement AboutPageTitle = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));
-//
-//    public  String getActAboutPageTitle () {
-//        String ActPageTitle = AboutPageTitle.getText();
-//        return ActPageTitle;
-//    }
 
+    public AndroidDriver openAboutPage() throws NullPointerException {
 
-    public AndroidDriver openAboutPage() throws MalformedURLException, NullPointerException {
-
-//        AndroidElement AboutPage = (AndroidElement) driver.findElement(By.xpath("\t/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]"));
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
         driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")).click();
         driver.findElement(By.xpath("\t/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).click();
         System.out.println("Opened About Page");
+
+        return driver;
+    }
+
+    public AndroidDriver checkPageTitle() throws NullPointerException{
+
+        String ActAboutPageTitle = new PageTitles().getActAboutPageTitle();
+
+        if (ActAboutPageTitle.equals(ExpAboutPageTitle)){
+            System.out.println("About Page Title is correct");
+        }
+        else{
+            System.out.println("!!! Something is wrong");
+        }
 
         return driver;
     }
@@ -81,15 +88,15 @@ public class AboutPage {
         return driver;
     }
 
-        public AndroidDriver checkLocationLink() throws NullPointerException, MalformedURLException {
+        public AndroidDriver checkLocationLink() throws NullPointerException {
 
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
         System.out.println("Checking Location link redirect");
         driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).click();
-        wait.until(ExpectedConditions.visibilityOf(MapPage.MapPageTitle));
-        String ActMapPageTitle = MapPage.getActMapPageTitle();
-        String ExpMapPageTitle = MapPage.getExpMapPageTitlte();
+        wait.until(ExpectedConditions.visibilityOf(PageTitles.MapPageTitle));
+        String ActMapPageTitle = PageTitles.getActMapPageTitle();
+        String ExpMapPageTitle = PageTitles.getExpMapPageTitlte();
         if (ActMapPageTitle.equals(ExpMapPageTitle)){
             System.out.println("Map page is opened");
         }
@@ -99,5 +106,7 @@ public class AboutPage {
 
         return driver;
         }
+
+
 
 }
