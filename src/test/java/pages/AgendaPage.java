@@ -11,12 +11,12 @@ public class AgendaPage {
 
 
 //Reusable stuff! Add correct XPATH and edit names
-public static AndroidElement AgendaPageTitle = (AndroidElement) driver.findElement(By.xpath(" "));
-
-    public static String getActAgendaPageTitle () {
-        String ActPageTitle = AgendaPageTitle.getText();
-        return ActPageTitle;
-    }
+//public static AndroidElement AgendaPageTitle = (AndroidElement) driver.findElement(By.xpath(" "));
+//
+//    public static String getActAgendaPageTitle () {
+//        String ActPageTitle = AgendaPageTitle.getText();
+//        return ActPageTitle;
+//    }
 
 
 }

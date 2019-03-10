@@ -36,12 +36,12 @@ public class TalksPage {
 
 
 //Reusable stuff! Add correct XPATH and edit names
-public static WebElement TalksPageTitle = driver.findElement(By.xpath(""));
-
-    public static String getActTalksPageTitle () {
-        String ActPageTitle = TalksPageTitle.getText();
-        return ActPageTitle;
-    }
+//public static WebElement TalksPageTitle = driver.findElement(By.xpath(""));
+//
+//    public static String getActTalksPageTitle () {
+//        String ActPageTitle = TalksPageTitle.getText();
+//        return ActPageTitle;
+//    }
 
 
 

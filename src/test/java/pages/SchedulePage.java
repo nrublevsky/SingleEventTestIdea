@@ -33,12 +33,12 @@ public class SchedulePage {
 
 
 //Reusable stuff! Add correct XPATH and edit names
-public static AndroidElement SchedulePageTitle = (AndroidElement) driver.findElement(By.xpath(""));
-
-    public static String getActSchedulePageTitle () {
-        String ActPageTitle = SchedulePageTitle.getText();
-        return ActPageTitle;
-    }
+//public static AndroidElement SchedulePageTitle = (AndroidElement) driver.findElement(By.xpath(""));
+//
+//    public static String getActSchedulePageTitle () {
+//        String ActPageTitle = SchedulePageTitle.getText();
+//        return ActPageTitle;
+//    }
 
 
 
