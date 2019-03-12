@@ -39,7 +39,7 @@ public class PageTitles {
 // ___________Map page___________________
     public static String ExpMapPageTitle = "Map";
 
-    public static String getExpMapPageTitlte(){
+    public static String getExpMapPageTitle(){
         return ExpMapPageTitle;
     }
 
@@ -65,10 +65,69 @@ public class PageTitles {
     }
 
 //___________Speakers page_________________
-//___________Exhibitors page_________________
-//___________News page_________________
-//___________Sponsors page_________________
-//___________Talks page_________________
+    public static String ExpSpeakersPageTitle = "Speakers";
 
+    public static String getExpSpeakersPageTitle() {
+        return ExpSpeakersPageTitle;
+    }
+
+    public static WebElement SpeakersPageTitle = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));
+
+    public static String getActSpeakersPageTitle () {
+        String ActPageTitle = SpeakersPageTitle.getText();
+        return ActPageTitle;
+    }
+//___________Exhibitors page_________________
+    public static String ExpExhibitorsPageTitle = "Exhibitors";
+
+    public static String getExpExhibitorsPageTitle() {
+        return ExpExhibitorsPageTitle;
+    }
+
+    public static WebElement ExhibitorsPageTitle = driver.findElement(By.xpath(" "));
+
+    public static String getActExhibitorsPageTitle () {
+        String ActPageTitle = ExhibitorsPageTitle.getText();
+        return ActPageTitle;
+    }
+//___________News page_________________
+    public static String ExpNewsPageTitle = "News";
+
+    public static String getExpNewsPageTitle() {
+        return ExpNewsPageTitle;
+    }
+
+    public static WebElement NewsPageTitle = driver.findElement(By.xpath(" "));
+
+    public static String getActNewsPageTitle () {
+        String ActPageTitle = NewsPageTitle.getText();
+        return ActPageTitle;
+    }
+//___________Sponsors page_________________
+    public static String ExpSponsorsPageTitle = "Sponsors";
+
+    public static String getExpSponsorsPageTitle() {
+        return ExpSponsorsPageTitle;
+    }
+
+    public static WebElement SponsorsPageTitle = driver.findElement(By.xpath(" "));
+
+    public static String getActSponsorsPageTitle () {
+        String ActPageTitle = SponsorsPageTitle.getText();
+        return ActPageTitle;
+    }
+//___________Talks page_________________
+    public static String ExpTalksPageTitle = "Talks";
+
+    public static String getExpTalksPageTitle() {
+        return ExpTalksPageTitle;
+    }
+
+    public static WebElement TalksPageTitle = driver.findElement(By.xpath(" "));
+
+    public static String getActTalksPageTitle () {
+        String ActPageTitle = TalksPageTitle.getText();
+        return ActPageTitle;
+    }
 
 }

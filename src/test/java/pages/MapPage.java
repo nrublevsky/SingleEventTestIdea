@@ -7,7 +7,17 @@ import static scenarios.MasterTest.driver;
 
 public class MapPage {
 
+/*
+        check opening from menu
 
+        check title
+
+        check menu (highlight)
+
+        check switching to plan/map if avail
+
+        check leaving
+*/
 
 
 }

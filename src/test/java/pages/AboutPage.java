@@ -96,7 +96,7 @@ public class AboutPage {
         driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).click();
         wait.until(ExpectedConditions.visibilityOf(PageTitles.MapPageTitle));
         String ActMapPageTitle = PageTitles.getActMapPageTitle();
-        String ExpMapPageTitle = PageTitles.getExpMapPageTitlte();
+        String ExpMapPageTitle = PageTitles.getExpMapPageTitle();
         if (ActMapPageTitle.equals(ExpMapPageTitle)){
             System.out.println("Map page is opened");
         }

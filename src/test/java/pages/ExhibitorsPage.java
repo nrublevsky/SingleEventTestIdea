@@ -7,14 +7,18 @@ import static scenarios.MasterTest.driver;
 public class ExhibitorsPage {
 
 
+/*
+        check opening from menu
 
-//Reusable stuff! Add correct XPATH and edit names
-//public static AndroidElement ExhibitorsPageTitle = (AndroidElement) driver.findElement(By.xpath(""));
-//
-//    public static String getActExhibitorsPageTitle () {
-//        String ActPageTitle = ExhibitorsPageTitle.getText();
-//        return ActPageTitle;
-//    }
+        check title
 
+        check search
+
+        check menu (highlight)
+
+        check opening exhibitor
+
+        check leaving
+*/
 
 }

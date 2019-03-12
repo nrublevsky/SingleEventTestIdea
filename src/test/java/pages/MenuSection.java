@@ -3,22 +3,29 @@ package pages;
 public class MenuSection {
 
 /*
-        MenuButton {
+    check open menu
 
-    Event Icon
-    Event Name
-    Schedule Button
-    Exhibitors Button
-    Sponsors Button
-    News Button
-    Agenda Button
-    Talks Button
-    Speakers Button
-    Map Button
-    Twitter Button
-    About Button
+    check which buttons are present
 
-    }
+    check event name
+
+    check event logo
+
+    check menu closing
+
+    check every button
+
+//__________About__________
+//__________Agenda_________
+//__________Exhibitors_____
+//__________Map____________
+//__________News___________
+//__________Schedule_______
+//__________Speakers_______
+//__________Sponsors_______
+//__________Talks__________
+//__________Twitter________
+
 */
 
 }

@@ -9,40 +9,18 @@ import static scenarios.MasterTest.driver;
 public class TalksPage {
 
 /*
-        Menu Button
-        TalksPage Title
-        Search Button {
-            Search Field
-            Back Button
-        }
-        Talks Section {
-            Talks{
-                Talk Header {
-                    Menu Button
-                    Talk Title
-                    Share Button
-                    }
-                Talk Name
-                Close Button
-                Talk Date
-                Stage Name
-                Add to Agenda Title
-                Add to Agenda Slider
-                Talk Description
-                Rate The Talk Section
-                }
-        }
+        check opening from menu
+
+        check title
+
+        check search
+
+        check menu (highlight)
+
+        check opening talk
+
+        check leaving
 */
-
-
-//Reusable stuff! Add correct XPATH and edit names
-//public static WebElement TalksPageTitle = driver.findElement(By.xpath(""));
-//
-//    public static String getActTalksPageTitle () {
-//        String ActPageTitle = TalksPageTitle.getText();
-//        return ActPageTitle;
-//    }
-
 
 
 }

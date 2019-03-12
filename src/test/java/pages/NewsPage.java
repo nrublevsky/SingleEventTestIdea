@@ -7,13 +7,19 @@ import static scenarios.MasterTest.driver;
 public class NewsPage {
 
 
-//public static AndroidElement NewsPageTitle = (AndroidElement) driver.findElement(By.xpath(""));
-//
-//    public static String getActNewsPageTitle () {
-//        String ActPageTitle = NewsPageTitle.getText();
-//        return ActPageTitle;
-//    }
+/*
+        check opening from menu
 
+        check title
+
+        check search
+
+        check menu (highlight)
+
+        check opening talk
+
+        check leaving
+*/
 
 
 }
