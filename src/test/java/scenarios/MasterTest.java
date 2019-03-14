@@ -24,7 +24,7 @@ public class MasterTest {
     @Test
     public void TCaseAboutPage() throws MalformedURLException, NullPointerException {
         System.out.println("Testing About page");
-        driver = new SideMenu().openAboutPage();
+//      driver = new SideMenu().openAboutPage();
         driver = new AboutPage().checkPageTitle();
         driver = new AboutPage().checkAboutPageInfo();
         driver = new AboutPage().checkLocationLink();
