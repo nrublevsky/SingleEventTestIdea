@@ -1,25 +1,36 @@
 package pages;
-import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
 
+import io.appium.java_client.android.AndroidDriver;
+
+import static pages.PageTitles.ExpNewsPageTitle;
 import static scenarios.MasterTest.driver;
 
 public class NewsPage {
 
 
-/*
-        check opening from menu
+//check opening from menu
+//already in Side Menu
 
-        check title
+//check title
+    public AndroidDriver checkPageTitle() throws NullPointerException {
 
-        check search
+        String ActNewsPageTitle = new PageTitles().getActNewsPageTitle();
 
-        check menu (highlight)
+        if (ActNewsPageTitle.equals(ExpNewsPageTitle)) {
+            System.out.println("News Page Title is correct");
+        } else {
+            System.out.println("!!! Something is wrong");
+        }
 
-        check opening talk
+        return driver;
+    }
+//check search
 
-        check leaving
-*/
+//check menu (highlight)
+
+//check opening news
+
+//check leaving
 
 
 }

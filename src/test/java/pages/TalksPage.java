@@ -1,26 +1,37 @@
 package pages;
 
-import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import io.appium.java_client.android.AndroidDriver;
 
+import static pages.PageTitles.ExpTalksPageTitle;
 import static scenarios.MasterTest.driver;
 
 public class TalksPage {
 
-/*
-        check opening from menu
 
-        check title
+//check opening from menu
+//already in Side Menu
 
-        check search
+//check title
 
-        check menu (highlight)
+    public AndroidDriver checkPageTitle() throws NullPointerException {
 
-        check opening talk
+        String ActTalksPageTitle = new PageTitles().getActTalksPageTitle();
 
-        check leaving
-*/
+        if (ActTalksPageTitle.equals(ExpTalksPageTitle)) {
+            System.out.println("Talks Page Title is correct");
+        } else {
+            System.out.println("!!! Something is wrong");
+        }
+
+        return driver;
+    }
+//check search
+
+//check menu (highlight)
+
+//check opening talk
+
+//check leaving
 
 
 }

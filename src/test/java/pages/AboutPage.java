@@ -1,15 +1,10 @@
 package pages;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import scenarios.ConfigsAndTexts;
-
-import java.net.MalformedURLException;
 
 import static pages.PageTitles.ExpAboutPageTitle;
 import static scenarios.MasterTest.driver;
@@ -17,22 +12,20 @@ import static scenarios.MasterTest.driver;
 public class AboutPage {
 
 
-
-    public AndroidDriver checkPageTitle() throws NullPointerException{
+    public AndroidDriver checkPageTitle() throws NullPointerException {
 
         String ActAboutPageTitle = new PageTitles().getActAboutPageTitle();
 
-        if (ActAboutPageTitle.equals(ExpAboutPageTitle)){
+        if (ActAboutPageTitle.equals(ExpAboutPageTitle)) {
             System.out.println("About Page Title is correct");
-        }
-        else{
+        } else {
             System.out.println("!!! Something is wrong");
         }
 
         return driver;
     }
 
-    public AndroidDriver checkAboutPageInfo() throws NullPointerException{
+    public AndroidDriver checkAboutPageInfo() throws NullPointerException {
 
         String ExpEventName = new ConfigsAndTexts().setExpEventName();
         String ExpEventDate = new ConfigsAndTexts().setExpEventDate();
@@ -76,7 +69,7 @@ public class AboutPage {
         return driver;
     }
 
-        public AndroidDriver checkLocationLink() throws NullPointerException {
+    public AndroidDriver checkLocationLink() throws NullPointerException {
 
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
@@ -85,16 +78,14 @@ public class AboutPage {
         wait.until(ExpectedConditions.visibilityOf(PageTitles.MapPageTitle));
         String ActMapPageTitle = PageTitles.getActMapPageTitle();
         String ExpMapPageTitle = PageTitles.getExpMapPageTitle();
-        if (ActMapPageTitle.equals(ExpMapPageTitle)){
+        if (ActMapPageTitle.equals(ExpMapPageTitle)) {
             System.out.println("Map page is opened");
-        }
-        else {
+        } else {
             System.out.println("!!! Map page isn't opened");
         }
 
         return driver;
-        }
-
+    }
 
 
 }

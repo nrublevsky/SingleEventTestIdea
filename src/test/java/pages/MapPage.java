@@ -1,24 +1,36 @@
 package pages;
-import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
+import io.appium.java_client.android.AndroidDriver;
+
+import static pages.PageTitles.ExpMapPageTitle;
 import static scenarios.MasterTest.driver;
 
 public class MapPage {
 
-/*
-        check opening from menu
 
-        check title
+//check opening from menu
+//already in Side menu
 
-        check menu (highlight)
+//check title
 
-        check switching to plan/map if avail
+    public AndroidDriver checkPageTitle() throws NullPointerException {
 
-        check leaving
-*/
+        String ActSpeakersPageTitle = new PageTitles().getActMapPageTitle();
 
+        if (ActSpeakersPageTitle.equals(ExpMapPageTitle)) {
+            System.out.println("Speakers Page Title is correct");
+        } else {
+            System.out.println("!!! Something is wrong");
+        }
+
+        return driver;
+    }
+
+//check menu (highlight)
+
+//check switching to plan/map if avail
+
+//check leaving
 
 
 }

@@ -1,45 +1,34 @@
 package pages;
-import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
+import io.appium.java_client.android.AndroidDriver;
+
+import static pages.PageTitles.ExpSchedulePageTitle;
 import static scenarios.MasterTest.driver;
 
 public class SchedulePage {
 
-/*    Menu Button
-      SchedulePage Title
-      Dates selector {
-        Stage Name
-        Timeline
-        Talk Item{
-             Talk Header {
-                    Menu Button
-                    Talk Title
-                    Share Button
-                    }
-             Talk Name
-             Close Button
-             Talk Date
-             Stage Name
-             Add to Agenda Title
-             Add to Agenda Slider
-             Talk Description
-             Rate The Talk Section
+//check opening from menu
+//already in Side menu
+
+    //check title
+    public AndroidDriver checkPageTitle() throws NullPointerException {
+
+        String ActSchedulePageTitle = new PageTitles().getActSchedulePageTitle();
+
+        if (ActSchedulePageTitle.equals(ExpSchedulePageTitle)) {
+            System.out.println("Schedule Page Title is correct");
+        } else {
+            System.out.println("!!! Something is wrong");
         }
-      }
-*/
 
+        return driver;
+    }
+//check menu (highlight)
 
+//check swiping?
 
-//Reusable stuff! Add correct XPATH and edit names
-//public static AndroidElement SchedulePageTitle = (AndroidElement) driver.findElement(By.xpath(""));
-//
-//    public static String getActSchedulePageTitle () {
-//        String ActPageTitle = SchedulePageTitle.getText();
-//        return ActPageTitle;
-//    }
+//check dates (switching)
 
-
+//check opening talk
 
 }

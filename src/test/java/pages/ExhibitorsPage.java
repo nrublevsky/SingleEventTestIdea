@@ -1,24 +1,36 @@
 package pages;
-import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
 
+import io.appium.java_client.android.AndroidDriver;
+
+import static pages.PageTitles.ExpExhibitorsPageTitle;
 import static scenarios.MasterTest.driver;
 
 public class ExhibitorsPage {
 
 
-/*
-        check opening from menu
+//check opening from menu
+//already is Side menu
 
-        check title
+    //check title
+    public AndroidDriver checkPageTitle() throws NullPointerException {
 
-        check search
+        String ActSpeakersPageTitle = new PageTitles().getActExhibitorsPageTitle();
 
-        check menu (highlight)
+        if (ActSpeakersPageTitle.equals(ExpExhibitorsPageTitle)) {
+            System.out.println("Speakers Page Title is correct");
+        } else {
+            System.out.println("!!! Something is wrong");
+        }
 
-        check opening exhibitor
+        return driver;
+    }
+//check search
 
-        check leaving
-*/
+//check menu (highlight)
+
+//check opening exhibitor
+
+//check leaving
+
 
 }

@@ -45,7 +45,7 @@ public class AndroidSetupHelper {
         return driver;
     }
 
-    public  AndroidDriver tearDown() throws MalformedURLException {
+    public AndroidDriver tearDown() throws MalformedURLException {
         AndroidDriver driver = MasterTest.driver;
 
         System.out.println("This is routine after each test");
