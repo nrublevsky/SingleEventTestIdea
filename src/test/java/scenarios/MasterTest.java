@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.AboutPage;
+import pages.MapPage;
 import pages.SideMenu;
 
 import java.net.MalformedURLException;
@@ -27,12 +28,15 @@ public class MasterTest {
         driver = new AboutPage().checkPageTitle();
         driver = new AboutPage().checkAboutPageInfo();
         driver = new AboutPage().checkLocationLink();
+
     }
 
     @Test
-    public void TCaseSpeakersPage() throws  MalformedURLException, NullPointerException{
-        System.out.println("Testing Speakers page");
-        driver = new SideMenu().openSpeakersPage();
+    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
+        System.out.println("Testing Map page");
+        driver = new SideMenu().openMapPage();
+        driver = new MapPage().checkPageTitle();
+
     }
 
     @After

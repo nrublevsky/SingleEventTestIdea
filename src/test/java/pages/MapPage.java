@@ -15,10 +15,10 @@ public class MapPage {
 
     public AndroidDriver checkPageTitle() throws NullPointerException {
 
-        String ActSpeakersPageTitle = new PageTitles().getActMapPageTitle();
+        String ActMapPageTitle = new PageTitles().getActMapPageTitle();
 
-        if (ActSpeakersPageTitle.equals(ExpMapPageTitle)) {
-            System.out.println("Speakers Page Title is correct");
+        if (ActMapPageTitle.equals(ExpMapPageTitle)) {
+            System.out.println("Map Page Title is correct");
         } else {
             System.out.println("!!! Something is wrong");
         }

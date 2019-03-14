@@ -1,6 +1,7 @@
 package pages;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -76,13 +77,9 @@ public class AboutPage {
         System.out.println("Checking Location link redirect");
         driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).click();
         wait.until(ExpectedConditions.visibilityOf(PageTitles.MapPageTitle));
-        String ActMapPageTitle = PageTitles.getActMapPageTitle();
-        String ExpMapPageTitle = PageTitles.getExpMapPageTitle();
-        if (ActMapPageTitle.equals(ExpMapPageTitle)) {
-            System.out.println("Map page is opened");
-        } else {
-            System.out.println("!!! Map page isn't opened");
-        }
+        driver = new MapPage().checkPageTitle();
+        System.out.println("Going back to About Page");
+        driver.pressKeyCode(AndroidKeyCode.BACK);
 
         return driver;
     }
