@@ -18,18 +18,6 @@ public class AboutPage {
 
 
 
-    public AndroidDriver openAboutPage() throws NullPointerException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
-        driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")).click();
-        driver.findElement(By.xpath("\t/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).click();
-        System.out.println("Opened About Page");
-
-        return driver;
-    }
-
     public AndroidDriver checkPageTitle() throws NullPointerException{
 
         String ActAboutPageTitle = new PageTitles().getActAboutPageTitle();

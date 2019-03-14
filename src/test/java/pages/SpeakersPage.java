@@ -45,6 +45,12 @@ public class SpeakersPage {
 //  check search
 
 //  check menu (highlight)
+    public AndroidDriver checkMenuHighlight() throws NullPointerException{
+
+        driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")).click();
+
+        return driver;
+    }
 
 //  check opening speaker
 
