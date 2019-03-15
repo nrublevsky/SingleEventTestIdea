@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,10 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static scenarios.MasterTest.driver;
 
 public class SideMenu {
-
-
-    //__________About__________
-    public static WebElement AboutButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]"));
 //    check which buttons are present
 
 //    check event name
@@ -21,6 +18,11 @@ public class SideMenu {
 //    check event logo
 
 //    check menu closing
+
+    //__________Menu___________
+    public static WebElement MenuButton = driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]"));
+    //__________About__________
+    public static WebElement AboutButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]"));
     //__________Agenda_________
     public static WebElement AgendaButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[2]"));
     //__________Exhibitors_____
@@ -39,24 +41,21 @@ public class SideMenu {
     public static WebElement TalksButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[3]"));
     //__________Twitter________
     public static WebElement TwitterButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]"));
-    //__________Menu___________
-    public static WebElement MenuButton = (AndroidElement) driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]"));
+
 
     //    check open menu
     public AndroidDriver openMenu() throws NullPointerException {
+        WebDriverWait wait = new WebDriverWait(driver, 60);
 
-        MenuButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")).click();
         return driver;
     }
 
     //    check every button
     public AndroidDriver openAboutPage() throws NullPointerException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.AboutButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).click();
         System.out.println("Opened About Page");
 
         return driver;
@@ -64,24 +63,16 @@ public class SideMenu {
 
     public AndroidDriver openAgendaPage() throws NullPointerException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.AgendaButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[2]")).click();
         System.out.println("Opened Agenda Page");
 
         return driver;
     }
 
     //exhibitors
-    public AndroidDriver openExhibotorsPage() throws NullPointerException {
+    public AndroidDriver openExhibitorsPage() throws NullPointerException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.ExhibitorsButton).click();
+        driver.findElement(By.xpath(" ")).click();
         System.out.println("Opened Exhibitors Page");
 
         return driver;
@@ -90,11 +81,7 @@ public class SideMenu {
     //map
     public AndroidDriver openMapPage() throws NullPointerException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.MapButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[5]")).click();
         System.out.println("Opened Map Page");
 
         return driver;
@@ -103,11 +90,7 @@ public class SideMenu {
     //news
     public AndroidDriver openNewsPage() throws NullPointerException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.NewsButton).click();
+        driver.findElement(By.xpath(" ")).click();
         System.out.println("Opened News Page");
 
         return driver;
@@ -116,11 +99,7 @@ public class SideMenu {
     //schedule
     public AndroidDriver openSchedulePage() throws NullPointerException {
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.ScheduleButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[1]")).click();
         System.out.println("Opened Schedule Page");
 
         return driver;
@@ -128,56 +107,118 @@ public class SideMenu {
 
     //speakers
     public AndroidDriver openSpeakersPage() throws NullPointerException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.SpeakersButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[4]")).click();
         System.out.println("Opened Speakers Page");
-
         return driver;
     }
 
     //sponsors
     public AndroidDriver openSponsorsPage() throws NullPointerException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.SponsorsButton).click();
+        driver.findElement(By.xpath(" ")).click();
         System.out.println("Opened Sponsors Page");
-
         return driver;
     }
 
     //talks
     public AndroidDriver openTalksPage() throws NullPointerException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.TalksButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[3]")).click();
         System.out.println("Opened Talks Page");
-
         return driver;
     }
 
     //twitter
     public AndroidDriver openTwitterPage() throws NullPointerException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        wait.until(ExpectedConditions.elementToBeClickable(SideMenu.MenuButton));
-        driver.findElement((By) SideMenu.MenuButton).click();
-        driver.findElement((By) SideMenu.TwitterButton).click();
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]")).click();
         System.out.println("Opened Twitter Page");
+        return driver;
+    }
+
+    public AndroidDriver checkMenuButtonsPresent() throws NullPointerException {
+        boolean AboutPagePresent = false;
+        boolean AgendaPagePresent = false;
+        boolean ExhibitorsPagePresent = false;
+        boolean MapPagePresent = false;
+        boolean NewsPagePresent = false;
+        boolean SchedulePagePresent = false;
+        boolean SpeakersPagePresent = false;
+        boolean SponsorsPagePresent = false;
+        boolean TalksPagePresent = false;
+        boolean TwitterPagePresent = false;
+
+        //driver check for button name
+        //if(Button name present){
+        //  PagePresent = true
+        // }
+
 
         return driver;
     }
 
 
+    public AndroidDriver checkMenuRedirects() throws NullPointerException {
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+
+//Speakers
+//if (SpeakersPagePresent = true){
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openSpeakersPage();
+        driver = new SpeakersPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//}
+
+//About
+
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openAboutPage();
+        driver = new AboutPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//Agenda
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openAgendaPage();
+        driver = new AgendaPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//Exhibitors
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openExhibitorsPage();
+        driver = new ExhibitorsPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//Map
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openMapPage();
+        driver = new MapPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//News
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openNewsPage();
+        driver = new NewsPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//Schedule
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openSchedulePage();
+        driver = new SchedulePage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//Sponsors
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openSponsorsPage();
+        driver = new SponsorsPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//Talks
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openTalksPage();
+        driver = new TalksPage().checkPageTitle();
+        driver.pressKeyCode(AndroidKeyCode.BACK);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+
+
+        return driver;
+    }
 }
 

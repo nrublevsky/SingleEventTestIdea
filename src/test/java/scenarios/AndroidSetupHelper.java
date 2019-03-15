@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class AndroidSetupHelper {
 
-    public AndroidDriver initSetup() throws MalformedURLException {
+    public AndroidDriver initSetup() throws MalformedURLException, NullPointerException {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("deviceName", "Nexus 6");
@@ -40,6 +40,8 @@ public class AndroidSetupHelper {
             System.out.println("Ooops, Synchronization isn't going anywhere");
         }
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("com.rozdoum.eventor.lpmd2018:id/alertTitle")));
+        System.out.println("Sync is finished");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
         System.out.println("Ok, and now to the Tests");
 
         return driver;
