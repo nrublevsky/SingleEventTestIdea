@@ -165,7 +165,9 @@ public class SideMenu {
         driver = new SpeakersPage().checkPageTitle();
         driver.pressKeyCode(AndroidKeyCode.BACK);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
-//}
+//}else{
+//  System.out.println("Speakers Page is missing")
+// }
 
 //About
 
