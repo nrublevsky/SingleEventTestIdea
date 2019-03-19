@@ -20,12 +20,12 @@ public class MasterTest {
     }
 
 
-    @Test
-    public void TCaseMenu() throws MalformedURLException, NullPointerException {
-        System.out.println("Testing Menu");
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().checkMenuRedirects();
-    }
+//    @Test
+//    public void TCaseMenu() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Menu");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkMenuRedirects();
+//    }
 
     @Test
     public void TCaseAboutPage() throws MalformedURLException, NullPointerException{

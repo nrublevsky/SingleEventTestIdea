@@ -14,7 +14,9 @@ public class AboutPage {
 
 
     public AndroidDriver checkPageTitle() throws NullPointerException {
+        WebDriverWait wait = new WebDriverWait(driver,30);
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView")));
         String ActAboutPageTitle = new PageTitles().getActAboutPageTitle();
 
         if (ActAboutPageTitle.equals(ExpAboutPageTitle)) {
@@ -76,10 +78,10 @@ public class AboutPage {
 
         System.out.println("Checking Location link redirect");
         driver.findElement(By.id("com.rozdoum.eventor.lpmd2018:id/addressTextView")).click();
-        wait.until(ExpectedConditions.visibilityOf(PageTitles.MapPageTitle));
         driver = new MapPage().checkPageTitle();
         System.out.println("Going back to About Page");
         driver.pressKeyCode(AndroidKeyCode.BACK);
+        driver = new AboutPage().checkPageTitle();
 
         return driver;
     }

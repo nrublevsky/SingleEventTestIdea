@@ -1,7 +1,21 @@
 package pages;
 
+import io.appium.java_client.android.AndroidDriver;
+
+import static scenarios.MasterTest.driver;
+
+
 public class SearchRoutine {
 
+
+    public AndroidDriver searchRoutine() throws NullPointerException{
+
+//        TouchAction action = new TouchAction(driver);
+//        action.press(100, 100).moveTo((100 - 100), (200-100)).release().perform();
+//        driver.swipe(100,100,100,200,10);
+
+        return driver;
+    }
     //swipe screen
     //tap in the middle
     //take text from title to TalkTitle String
