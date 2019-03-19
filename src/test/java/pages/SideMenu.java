@@ -40,6 +40,16 @@ public class SideMenu {
 //    //__________Twitter________
 //    public static WebElement TwitterButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]"));
 
+    public boolean AboutPagePresent = false;
+    public boolean AgendaPagePresent = false;
+    public boolean ExhibitorsPagePresent = false;
+    public boolean MapPagePresent = false;
+    public boolean NewsPagePresent = false;
+    public boolean SchedulePagePresent = false;
+    public boolean SpeakersPagePresent = false;
+    public boolean SponsorsPagePresent = false;
+    public boolean TalksPagePresent = false;
+    public boolean TwitterPagePresent = false;
 
     //    check open menu
     public AndroidDriver openMenu() throws NullPointerException {
@@ -50,7 +60,7 @@ public class SideMenu {
 
     //    check every button
     public AndroidDriver openAboutPage() throws NullPointerException {
-        WebDriverWait wait = new WebDriverWait(driver,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
 
         driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView")));
@@ -131,22 +141,57 @@ public class SideMenu {
     }
 
     public AndroidDriver checkMenuButtonsPresent() throws NullPointerException {
-        boolean AboutPagePresent = false;
-        boolean AgendaPagePresent = false;
-        boolean ExhibitorsPagePresent = false;
-        boolean MapPagePresent = false;
-        boolean NewsPagePresent = false;
-        boolean SchedulePagePresent = false;
-        boolean SpeakersPagePresent = false;
-        boolean SponsorsPagePresent = false;
-        boolean TalksPagePresent = false;
-        boolean TwitterPagePresent = false;
 
-        //driver check for button name
-        //if(Button name present){
-        //  PagePresent = true
-        // }
+        WebDriverWait wait = new WebDriverWait(driver, 15);
 
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
+            AboutPagePresent = true;
+            System.out.println("Found About button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
+            AgendaPagePresent = true;
+            System.out.println("Found Agenda button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
+            ExhibitorsPagePresent = true;
+            System.out.println("Found Exhibitors button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
+            MapPagePresent = true;
+            System.out.println("Found Map button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
+            NewsPagePresent = true;
+            System.out.println("Found News button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
+            SchedulePagePresent = true;
+            System.out.println("Found Schedule button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[4]")).isDisplayed()) {
+            SpeakersPagePresent = true;
+            System.out.println("Found Speakers button");
+        }
+
+        if (driver.findElement(By.xpath("")).isDisplayed()) {
+            SponsorsPagePresent = true;
+            System.out.println("Found Sponsors button");
+        }
+
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[3]")).isDisplayed()) {
+            TalksPagePresent = true;
+            System.out.println("Found Talks button");
+        }
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]")).isDisplayed()) {
+            TwitterPagePresent = true;
+            System.out.println("Found Twitter button");
+        }
 
         return driver;
     }
@@ -156,67 +201,106 @@ public class SideMenu {
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
 //Speakers
-//if (SpeakersPagePresent = true){
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openSpeakersPage();
-        driver = new SpeakersPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
-//}else{
-//  System.out.println("Speakers Page is missing")
-// }
+        if (SpeakersPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openSpeakersPage();
+            driver = new SpeakersPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Speakers Page is missing");
+        }
 
 //About
-
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openAboutPage();
-        driver = new AboutPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (AboutPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openAboutPage();
+            driver = new AboutPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("About page is missing");
+        }
 //Agenda
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openAgendaPage();
-        driver = new AgendaPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (AgendaPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openAgendaPage();
+            driver = new AgendaPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Agenda page is missing");
+        }
 //Exhibitors
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openExhibitorsPage();
-        driver = new ExhibitorsPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (ExhibitorsPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openExhibitorsPage();
+            driver = new ExhibitorsPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Exhibitors page is missing");
+        }
 //Map
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openMapPage();
-        driver = new MapPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (MapPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openMapPage();
+            driver = new MapPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Map page is missing");
+        }
 //News
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openNewsPage();
-        driver = new NewsPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (NewsPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openNewsPage();
+            driver = new NewsPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("News page is missing");
+        }
 //Schedule
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openSchedulePage();
-        driver = new SchedulePage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (SchedulePagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openSchedulePage();
+            driver = new SchedulePage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Schedule page is missing");
+        }
 //Sponsors
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openSponsorsPage();
-        driver = new SponsorsPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        if (SponsorsPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openSponsorsPage();
+            driver = new SponsorsPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Sponsors page is missing");
+        }
 //Talks
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openTalksPage();
-        driver = new TalksPage().checkPageTitle();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
-
-
+        if (TalksPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openTalksPage();
+            driver = new TalksPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Talks page is missing");
+        }
+//Twitter
+        if (TwitterPagePresent = true) {
+            driver = new SideMenu().openMenu();
+            driver = new SideMenu().openTwitterPage();
+            driver = new TalksPage().checkPageTitle();
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+        } else {
+            System.out.println("Twitter page is missing");
+        }
         return driver;
     }
 }

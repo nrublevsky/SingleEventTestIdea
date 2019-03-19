@@ -14,7 +14,7 @@ public class AboutPage {
 
 
     public AndroidDriver checkPageTitle() throws NullPointerException {
-        WebDriverWait wait = new WebDriverWait(driver,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView")));
         String ActAboutPageTitle = new PageTitles().getActAboutPageTitle();
@@ -86,5 +86,12 @@ public class AboutPage {
         return driver;
     }
 
-
+    public AndroidDriver testAboutPage() throws NullPointerException{
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openAboutPage();
+        driver = new AboutPage().checkPageTitle();
+        driver = new AboutPage().checkAboutPageInfo();
+        driver = new AboutPage().checkLocationLink();
+        return driver;
+    }
 }

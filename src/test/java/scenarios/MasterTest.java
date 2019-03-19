@@ -20,22 +20,18 @@ public class MasterTest {
     }
 
 
-//    @Test
-//    public void TCaseMenu() throws MalformedURLException, NullPointerException {
-//        System.out.println("Testing Menu");
-//        driver = new SideMenu().openMenu();
-//        driver = new SideMenu().checkMenuRedirects();
-//    }
+    @Test
+    public void TCaseMenu() throws MalformedURLException, NullPointerException {
+        System.out.println("Testing Menu");
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().checkMenuButtonsPresent();
+//      driver = new SideMenu().checkMenuRedirects();
+    }
 
     @Test
-    public void TCaseAboutPage() throws MalformedURLException, NullPointerException{
+    public void TCaseAboutPage() throws MalformedURLException, NullPointerException {
         System.out.println("Testing About page");
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openAboutPage();
-        driver = new AboutPage().checkPageTitle();
-        driver = new AboutPage().checkAboutPageInfo();
-        driver = new AboutPage().checkLocationLink();
-
+        driver = new AboutPage().testAboutPage();
     }
 
 //    @Test
@@ -45,6 +41,63 @@ public class MasterTest {
 //        driver = new MapPage().checkPageTitle();
 //
 //    }
+
+//    @Test
+//    public void TCaseNewsPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
+//    @Test
+//    public void TCaseAgendaPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
+//    @Test
+//    public void TCaseExhibitorsPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
+//    @Test
+//    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
+//    @Test
+//    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
+//    @Test
+//    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
+//    @Test
+//    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
+//        System.out.println("Testing Map page");
+//        driver = new SideMenu().openMapPage();
+//        driver = new MapPage().checkPageTitle();
+//
+//    }
+
 
     @After
     public void tear() throws MalformedURLException {
