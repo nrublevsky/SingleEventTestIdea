@@ -148,7 +148,7 @@ public class PageTitles {
 //    public static MobileElement SchedulePageTitle = (MobileElement) driver.findElement(By.xpath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));
     //____________About page_________________
     public static String ExpAboutPageTitle = "About";
-//    public static WebElement AboutPageTitle = (MobileElement) driver.findElement(By.className("android.widget.TextView"));
+//    static MobileElement AboutPageTitle = (MobileElement) driver.findElement(By.className("android.widget.TextView"));
     // ___________Map page___________________
     public static String ExpMapPageTitle = "Map";
 //    public static MobileElement MapPageTitle = (MobileElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView"));

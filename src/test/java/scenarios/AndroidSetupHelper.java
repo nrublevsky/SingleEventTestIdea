@@ -20,7 +20,6 @@ public class AndroidSetupHelper {
         caps.setCapability("platformVersion", "8.0");
         caps.setCapability("appPackage", "com.rozdoum.eventor.lpmd2018");
         caps.setCapability("appActivity", "com.rozdoum.eventor.activities.SchedulerActivity");
-//        caps.setCapability("noReset", "true");
 
 
         URL url = new URL("http://0.0.0.0:4723/wd/hub");
@@ -33,7 +32,6 @@ public class AndroidSetupHelper {
         driver.launchApp();
         System.out.println("This is routine before each test");
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.support.v7.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView"))));
-//        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.support.v7.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView"));
         if (SyncMsgExp.equals(SyncMsgAct)) {
             System.out.println("Synchronisation is going good");
         } else {

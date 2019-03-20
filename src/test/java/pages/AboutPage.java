@@ -94,4 +94,7 @@ public class AboutPage {
         driver = new AboutPage().checkLocationLink();
         return driver;
     }
+
+    //    //__________About__________
+//   static MobileElement AboutButton = (MobileElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]"));
 }

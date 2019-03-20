@@ -18,28 +18,6 @@ public class SideMenu {
 
 //    check menu closing
 
-    //__________Menu___________
-    MobileElement MenuButton = (MobileElement) driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]"));
-//    //__________About__________
-//    public static WebElement AboutButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]"));
-//    //__________Agenda_________
-//    public static WebElement AgendaButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[2]"));
-//    //__________Exhibitors_____
-//    public static WebElement ExhibitorsButton = driver.findElement(By.xpath(""));
-//    //__________Map____________
-//    public static WebElement MapButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[5]"));
-//    //__________News___________
-//    public static WebElement NewsButton = driver.findElement(By.xpath(""));
-//    //__________Schedule_______.
-//    public static WebElement ScheduleButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[1]"));
-//    //__________Speakers_______
-//    public static WebElement SpeakersButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[4]"));
-//    //__________Sponsors_______
-//    public static WebElement SponsorsButton = (AndroidElement) driver.findElement(By.xpath(" "));
-//    //__________Talks__________
-//    public static WebElement TalksButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[3]"));
-//    //__________Twitter________
-//    public static WebElement TwitterButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]"));
 
     public boolean AboutPagePresent = false;
     public boolean AgendaPagePresent = false;
@@ -52,20 +30,14 @@ public class SideMenu {
     public boolean TalksPagePresent = false;
     public boolean TwitterPagePresent = false;
 
+    //__________Menu___________
+    MobileElement MenuButton = (MobileElement) driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]"));
+
     //    check open menu
     public AndroidDriver openMenu() throws NullPointerException {
 
-        driver.findElementByAccessibilityId("Open navigation drawer").click();
-        return driver;
-    }
-
-    //    check every button
-    public AndroidDriver openAboutPage() throws NullPointerException {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-
-        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView")));
-        System.out.println("Opened About Page");
+        MenuButton.click();
+        System.out.println("Opened Menu");
         return driver;
     }
 
@@ -217,6 +189,16 @@ public class SideMenu {
         return driver;
     }
 
+    //    check every button
+    public AndroidDriver openAboutPage() throws NullPointerException {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+
+        driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).click();
+//        AboutPage.AboutButton.click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("android.widget.TextView"))));
+        System.out.println("Opened About Page");
+        return driver;
+    }
 
     public AndroidDriver checkMenuRedirects() throws NullPointerException {
         WebDriverWait wait = new WebDriverWait(driver, 60);
@@ -232,16 +214,16 @@ public class SideMenu {
             System.out.println("Speakers Page is missing");
         }
 
-//About
-        if (AboutPagePresent = true) {
-            driver = new SideMenu().openMenu();
-            driver = new SideMenu().openAboutPage();
-            driver = new AboutPage().checkPageTitle();
-            driver.pressKeyCode(AndroidKeyCode.BACK);
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
-        } else {
-            System.out.println("About page is missing");
-        }
+////About
+//        if (AboutPagePresent = true) {
+//            driver = new SideMenu().openMenu();
+//            driver = new SideMenu().openAboutPage();
+//            driver = new AboutPage().checkPageTitle();
+//            driver.pressKeyCode(AndroidKeyCode.BACK);
+//            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]")));
+//        } else {
+//            System.out.println("About page is missing");
+//        }
 //Agenda
         if (AgendaPagePresent = true) {
             driver = new SideMenu().openMenu();
@@ -324,6 +306,26 @@ public class SideMenu {
         }
         return driver;
     }
+//    //__________About__________
+//    MobileElement AboutButton = (MobileElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]"));
+//    //__________Agenda_________
+//    public static WebElement AgendaButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[2]"));
+//    //__________Exhibitors_____
+//    public static WebElement ExhibitorsButton = driver.findElement(By.xpath(""));
+//    //__________Map____________
+//    public static WebElement MapButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[5]"));
+//    //__________News___________
+//    public static WebElement NewsButton = driver.findElement(By.xpath(""));
+//    //__________Schedule_______.
+//    public static WebElement ScheduleButton = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[1]"));
+//    //__________Speakers_______
+//    public static WebElement SpeakersButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[4]"));
+//    //__________Sponsors_______
+//    public static WebElement SponsorsButton = (AndroidElement) driver.findElement(By.xpath(" "));
+//    //__________Talks__________
+//    public static WebElement TalksButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[3]"));
+//    //__________Twitter________
+//    public static WebElement TwitterButton = (AndroidElement) driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]"));
 
 }
 
