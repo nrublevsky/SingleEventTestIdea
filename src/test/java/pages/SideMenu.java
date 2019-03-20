@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static scenarios.MasterTest.driver;
 
 public class SideMenu {
@@ -32,6 +34,31 @@ public class SideMenu {
 
     //__________Menu___________
     MobileElement MenuButton = (MobileElement) driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]"));
+
+public AndroidDriver checkMenuNames() throws NullPointerException {
+    List<MobileElement> MenuButtonNames = driver.findElements(By.className("android.widget.TextView"));
+    String MenuButtonName1 = MenuButtonNames.get(0).getText();
+    String MenuButtonName2 = MenuButtonNames.get(1).getText();
+    String MenuButtonName3 = MenuButtonNames.get(2).getText();
+    String MenuButtonName4 = MenuButtonNames.get(3).getText();
+    String MenuButtonName5 = MenuButtonNames.get(4).getText();
+    String MenuButtonName6 = MenuButtonNames.get(5).getText();
+    String MenuButtonName7 = MenuButtonNames.get(6).getText();
+    String MenuButtonName8 = MenuButtonNames.get(7).getText();
+    String MenuButtonName9 = MenuButtonNames.get(8).getText();
+    System.out.println(MenuButtonName1);
+    System.out.println(MenuButtonName2);
+    System.out.println(MenuButtonName3);
+    System.out.println(MenuButtonName4);
+    System.out.println(MenuButtonName5);
+    System.out.println(MenuButtonName6);
+    System.out.println(MenuButtonName7);
+    System.out.println(MenuButtonName8);
+    System.out.println(MenuButtonName9);
+
+    return driver;
+}
+
 
     //    check open menu
     public AndroidDriver openMenu() throws NullPointerException {
