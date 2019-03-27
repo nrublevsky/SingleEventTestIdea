@@ -2,6 +2,8 @@ package pages;
 
 import io.appium.java_client.android.AndroidDriver;
 
+import java.net.MalformedURLException;
+
 import static pages.PageTitles.ExpExhibitorsPageTitle;
 import static scenarios.MasterTest.driver;
 
@@ -14,17 +16,23 @@ public class ExhibitorsPage {
     //check title
     public AndroidDriver checkPageTitle() throws NullPointerException {
 
-        String ActSpeakersPageTitle = new PageTitles().getActExhibitorsPageTitle();
+        String ActExhibitorsPageTitle = new PageTitles().getActExhibitorsPageTitle();
 
-        if (ActSpeakersPageTitle.equals(ExpExhibitorsPageTitle)) {
-            System.out.println("Speakers Page Title is correct");
+        if (ActExhibitorsPageTitle.equals(ExpExhibitorsPageTitle)) {
+            System.out.println("Exhibitors Page Title is correct");
         } else {
             System.out.println("!!! Something is wrong");
         }
+        return driver;
+    }
+    //check search
+
+    public AndroidDriver testExhibitorsPage() throws NullPointerException, MalformedURLException, InterruptedException {
+
+        driver = new SearchRoutine().searchRoutine();
 
         return driver;
     }
-//check search
 
 //check menu (highlight)
 

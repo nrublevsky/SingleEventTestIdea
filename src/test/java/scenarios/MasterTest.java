@@ -20,14 +20,29 @@ public class MasterTest {
 
 
     @Test
-    public void TCaseMenu() throws MalformedURLException, NullPointerException {
+    public void TCaseMenu() throws MalformedURLException, NullPointerException, InterruptedException {
         System.out.println("Testing Menu");
         driver = new SideMenu().openMenu();
+        System.out.println("Checking Menu buttons present");
         driver = new SideMenu().checkMenuNames();
-//        driver = new SideMenu().openAboutPage();
-////        driver = new SideMenu().checkMenuButtonsPresent();
-////        driver = new SideMenu().checkMenuRedirects();
     }
+
+    @Test
+    public void TCaseAboutPage() throws NullPointerException, InterruptedException {
+        System.out.println("Checking About page");
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().checkAboutButton();
+    }
+
+    @Test
+    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
+        System.out.println("Testing Talks page");
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().checkTalksButton();
+
+
+    }
+
 
 //    @Test
 //    public void TCaseAboutPage() throws MalformedURLException, NullPointerException {

@@ -86,10 +86,8 @@ public class AboutPage {
         return driver;
     }
 
-    public AndroidDriver testAboutPage() throws NullPointerException{
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().openAboutPage();
-        driver = new AboutPage().checkPageTitle();
+    public AndroidDriver testAboutPage() throws NullPointerException, InterruptedException {
+
         driver = new AboutPage().checkAboutPageInfo();
         driver = new AboutPage().checkLocationLink();
         return driver;
