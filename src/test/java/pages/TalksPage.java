@@ -36,7 +36,7 @@ public class TalksPage {
 //        TouchActions action = new TouchActions(driver);
 //        action.scroll(10, 100);
 //        action.perform();
-        driver = new SearchRoutine().searchRoutine();
+        driver = new SearchRoutine().searchRoutineTalks();
         return driver;
     }
 

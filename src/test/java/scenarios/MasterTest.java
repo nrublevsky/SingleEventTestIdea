@@ -23,25 +23,31 @@ public class MasterTest {
     public void TCaseMenu() throws MalformedURLException, NullPointerException, InterruptedException {
         System.out.println("Testing Menu");
         driver = new SideMenu().openMenu();
+        driver = new SideMenu().checkEventName();
         System.out.println("Checking Menu buttons present");
         driver = new SideMenu().checkMenuNames();
     }
 
-    @Test
-    public void TCaseAboutPage() throws NullPointerException, InterruptedException {
-        System.out.println("Checking About page");
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().checkAboutButton();
-    }
-
-    @Test
-    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
-        System.out.println("Testing Talks page");
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().checkTalksButton();
-
-
-    }
+//    @Test
+//    public void TCaseAboutPage() throws NullPointerException, InterruptedException {
+//        System.out.println("Checking About page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkAboutButton();
+//    }
+//
+//    @Test
+//    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
+//        System.out.println("Testing Talks page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkTalksButton();
+//    }
+//
+//    @Test
+//    public void TCaseSpeakersPage() throws MalformedURLException, NullPointerException, InterruptedException {
+//        System.out.println("Testing Speakers page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkSpeakersButton();
+//    }
 
 
 //    @Test

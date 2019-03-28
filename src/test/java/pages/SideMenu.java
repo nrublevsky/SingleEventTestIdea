@@ -3,7 +3,9 @@ package pages;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import scenarios.ConfigsAndTexts;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -33,14 +35,32 @@ public class SideMenu {
     public boolean TwitterPagePresent = false;
 
     //__________Menu___________
-    MobileElement MenuButton = (MobileElement) driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]"));
+//    MobileElement MenuButton = (MobileElement) driver.findElementByAccessibilityId("Open navigation drawer");
 
     //    check open menu
     public AndroidDriver openMenu() throws NullPointerException, InterruptedException {
 
-        MenuButton.click();
+        driver.findElementByAccessibilityId("Open navigation drawer").click();
         System.out.println("Opened Menu");
 //        Thread.sleep(15000);
+        return driver;
+    }
+
+    public AndroidDriver checkEventName() throws NullPointerException,MalformedURLException{
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navTitleTextView")));
+        String ActEventName = driver.findElement(By.id("navTitleTextView")).getText();
+        String ExpEventName = new ConfigsAndTexts().setExpEventName();
+        System.out.println(ActEventName);
+        System.out.println(ExpEventName);
+
+        if (ActEventName.equals(ExpEventName)) {
+            System.out.println("Event name is correct: " + ActEventName);
+        } else {
+            System.out.println("!!! Something is wrong");
+        }
+
         return driver;
     }
 
@@ -122,7 +142,26 @@ public class SideMenu {
                 element.click();
                 driver = new ExhibitorsPage().checkPageTitle();
                 driver = new TalksPage().testTalksPage();
-                System.out.println("Checked Talks page and Search");
+                System.out.println("Checked Exhibitors page and Search");
+                break;
+            }
+
+        }
+        return driver;
+    }
+
+    public AndroidDriver checkSpeakersButton() throws NullPointerException, InterruptedException, MalformedURLException {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+
+        List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
+        for (MobileElement element : menuButtonsPresentList) {
+            String buttonName = element.getText();
+            if (ExpSpeakersPageTitle.equals(buttonName)) {
+                System.out.println("Checking Speakers page");
+                element.click();
+                driver = new SpeakersPage().checkPageTitle();
+                driver = new SpeakersPage().testSpeakersPage();
+                System.out.println("Checked Speakers page and Search");
                 break;
             }
 

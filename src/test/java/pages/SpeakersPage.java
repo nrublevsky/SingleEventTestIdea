@@ -31,17 +31,14 @@ public class SpeakersPage {
     //  check search
     public AndroidDriver testSpeakersPage() throws NullPointerException, MalformedURLException, InterruptedException {
 
-        driver = new SearchRoutine().searchRoutine();
+        driver = new SearchRoutine().searchRoutineSpeakers();
 
         return driver;
     }
-//  check menu (highlight)
-//    public AndroidDriver checkMenuHighlight() throws NullPointerException{
-//
-//        driver.findElement((By)SideMenu.MenuButton).click();
-//
-//        return driver;
-//    }
+
+
+
+
 
 //  check opening speaker
 
