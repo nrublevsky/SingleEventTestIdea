@@ -105,7 +105,7 @@ public class PageTitles {
     }
 
     public static String getActTalksPageTitle() {
-        String ActPageTitle = driver.findElement(By.className("android.widget.TextView")).getText();
+        String ActPageTitle = driver.findElement(By.xpath("android.widget.TextView")).getText();
         return ActPageTitle;
     }
 

@@ -19,28 +19,28 @@ public class MasterTest {
     }
 
 
-    @Test
-    public void TCaseMenu() throws MalformedURLException, NullPointerException, InterruptedException {
-        System.out.println("Testing Menu");
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().checkEventName();
-        System.out.println("Checking Menu buttons present");
-        driver = new SideMenu().checkMenuNames();
-    }
-
 //    @Test
-//    public void TCaseAboutPage() throws NullPointerException, InterruptedException {
+//    public void TCaseMenu() throws MalformedURLException, NullPointerException, InterruptedException {
+//        System.out.println("Testing Menu");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkEventName();
+//        System.out.println("Checking Menu buttons present");
+//        driver = new SideMenu().checkMenuNames();
+//    }
+////
+//    @Test
+//    public void TCaseAboutPage() throws NullPointerException, InterruptedException, MalformedURLException {
 //        System.out.println("Checking About page");
 //        driver = new SideMenu().openMenu();
 //        driver = new SideMenu().checkAboutButton();
 //    }
 //
-//    @Test
-//    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
-//        System.out.println("Testing Talks page");
-//        driver = new SideMenu().openMenu();
-//        driver = new SideMenu().checkTalksButton();
-//    }
+    @Test
+    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
+        System.out.println("Testing Talks page");
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().checkTalksButton();
+    }
 //
 //    @Test
 //    public void TCaseSpeakersPage() throws MalformedURLException, NullPointerException, InterruptedException {
@@ -49,11 +49,11 @@ public class MasterTest {
 //        driver = new SideMenu().checkSpeakersButton();
 //    }
 
-
 //    @Test
-//    public void TCaseAboutPage() throws MalformedURLException, NullPointerException {
-//        System.out.println("Testing About page");
-//        driver = new AboutPage().testAboutPage();
+//    public void TCaseSponsorsPage() throws MalformedURLException, NullPointerException, InterruptedException {
+//        System.out.println("Testing Sponsors page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkSponsorsButton();
 //    }
 
 //    @Test

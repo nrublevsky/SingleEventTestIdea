@@ -39,7 +39,7 @@ public class SideMenu {
 
     //    check open menu
     public AndroidDriver openMenu() throws NullPointerException, InterruptedException {
-
+        System.out.println(driver.getContext());
         driver.findElementByAccessibilityId("Open navigation drawer").click();
         System.out.println("Opened Menu");
 //        Thread.sleep(15000);
@@ -49,8 +49,8 @@ public class SideMenu {
     public AndroidDriver checkEventName() throws NullPointerException,MalformedURLException{
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("navTitleTextView")));
-        String ActEventName = driver.findElement(By.id("navTitleTextView")).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView")));
+        String ActEventName = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView")).getText();
         String ExpEventName = new ConfigsAndTexts().setExpEventName();
         System.out.println(ActEventName);
         System.out.println(ExpEventName);
@@ -64,6 +64,26 @@ public class SideMenu {
         return driver;
     }
 
+    public AndroidDriver checkFeedback() throws MalformedURLException, NullPointerException, InterruptedException{
+
+        WebDriverWait wait = new WebDriverWait(driver,15);
+
+        String feedbackText = "Your event is super dooper, thanks!";
+        if (driver.findElementById("alertTitle").isDisplayed()) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alertTitle")));
+            System.out.println("Here's feedback window");
+            driver.findElementById("feedbackRatingBar").click();
+            driver.findElementById("feedbackEditText").sendKeys(feedbackText);
+            driver.findElementById("button2").click();
+
+            System.out.println(driver.getContext());
+
+            return driver;
+        }
+        driver.context("NATIVE_APP");
+        return driver;
+    }
+
     public AndroidDriver checkMenuNames() throws NullPointerException, InterruptedException {
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         System.out.println("Here are buttons that are present in menu:");
@@ -74,7 +94,7 @@ public class SideMenu {
         return driver;
     }
 
-    public AndroidDriver checkAboutButton() throws NullPointerException, InterruptedException {
+    public AndroidDriver checkAboutButton() throws NullPointerException, InterruptedException, MalformedURLException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
@@ -83,6 +103,7 @@ public class SideMenu {
             if (ExpAboutPageTitle.equals(buttonName)) {
                 System.out.println("Checking About page");
                 element.click();
+                driver = new SideMenu().checkFeedback();
                 driver = new AboutPage().checkPageTitle();
                 driver = new AboutPage().testAboutPage();
                 System.out.println("Checked About page");
@@ -101,6 +122,7 @@ public class SideMenu {
             if (ExpTalksPageTitle.equals(buttonName)) {
                 System.out.println("Checking Talks page");
                 element.click();
+                driver = new SideMenu().checkFeedback();
                 driver = new TalksPage().checkPageTitle();
                 driver = new TalksPage().testTalksPage();
                 System.out.println("Checked Talks page and Search");
@@ -120,6 +142,7 @@ public class SideMenu {
             if (ExpAgendaPageTitle.equals(buttonName)) {
                 System.out.println("Checking Agenda page");
                 element.click();
+                driver = new SideMenu().checkFeedback();
                 driver = new AgendaPage().checkPageTitle();
                 // _________Fill in_____________
                 System.out.println("Checked Agenda page");
@@ -140,6 +163,7 @@ public class SideMenu {
             if (ExpExhibitorsPageTitle.equals(buttonName)) {
                 System.out.println("Checking Exhibitors page");
                 element.click();
+                driver = new SideMenu().checkFeedback();
                 driver = new ExhibitorsPage().checkPageTitle();
                 driver = new TalksPage().testTalksPage();
                 System.out.println("Checked Exhibitors page and Search");
@@ -159,8 +183,29 @@ public class SideMenu {
             if (ExpSpeakersPageTitle.equals(buttonName)) {
                 System.out.println("Checking Speakers page");
                 element.click();
+                driver = new SideMenu().checkFeedback();
                 driver = new SpeakersPage().checkPageTitle();
                 driver = new SpeakersPage().testSpeakersPage();
+                System.out.println("Checked Speakers page and Search");
+                break;
+            }
+
+        }
+        return driver;
+    }
+
+    public AndroidDriver checkSponsorsButton() throws NullPointerException, InterruptedException, MalformedURLException {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+
+        List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
+        for (MobileElement element : menuButtonsPresentList) {
+            String buttonName = element.getText();
+            if (ExpSponsorsPageTitle.equals(buttonName)) {
+                System.out.println("Checking Sponsors page");
+                element.click();
+                driver = new SideMenu().checkFeedback();
+                driver = new SponsorsPage().checkPageTitle();
+                driver = new SponsorsPage().testSponsorsPage();
                 System.out.println("Checked Speakers page and Search");
                 break;
             }

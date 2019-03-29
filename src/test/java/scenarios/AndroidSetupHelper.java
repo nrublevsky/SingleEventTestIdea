@@ -24,7 +24,7 @@ public class AndroidSetupHelper {
 
         URL url = new URL("http://0.0.0.0:4723/wd/hub");
         AndroidDriver driver = new AndroidDriver(url, caps);
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         String SyncMsgExp = "Synchronisation with server, please wait";
         String SyncMsgAct = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.support.v7.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView")).getText();
 

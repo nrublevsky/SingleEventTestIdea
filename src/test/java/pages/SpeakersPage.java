@@ -31,7 +31,7 @@ public class SpeakersPage {
     //  check search
     public AndroidDriver testSpeakersPage() throws NullPointerException, MalformedURLException, InterruptedException {
 
-        driver = new SearchRoutine().searchRoutineSpeakers();
+        driver = new SearchRoutine().searchSpeakers();
 
         return driver;
     }
