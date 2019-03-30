@@ -27,20 +27,20 @@ public class MasterTest {
 //        System.out.println("Checking Menu buttons present");
 //        driver = new SideMenu().checkMenuNames();
 //    }
-////
-//    @Test
-//    public void TCaseAboutPage() throws NullPointerException, InterruptedException, MalformedURLException {
-//        System.out.println("Checking About page");
-//        driver = new SideMenu().openMenu();
-//        driver = new SideMenu().checkAboutButton();
-//    }
 //
     @Test
-    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
-        System.out.println("Testing Talks page");
+    public void TCaseAboutPage() throws NullPointerException, InterruptedException, MalformedURLException {
+        System.out.println("Checking About page");
         driver = new SideMenu().openMenu();
-        driver = new SideMenu().checkTalksButton();
+        driver = new SideMenu().checkAboutButton();
     }
+
+//    @Test
+//    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
+//        System.out.println("Testing Talks page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkTalksButton();
+//    }
 //
 //    @Test
 //    public void TCaseSpeakersPage() throws MalformedURLException, NullPointerException, InterruptedException {
@@ -48,12 +48,20 @@ public class MasterTest {
 //        driver = new SideMenu().openMenu();
 //        driver = new SideMenu().checkSpeakersButton();
 //    }
-
+//
 //    @Test
 //    public void TCaseSponsorsPage() throws MalformedURLException, NullPointerException, InterruptedException {
 //        System.out.println("Testing Sponsors page");
 //        driver = new SideMenu().openMenu();
 //        driver = new SideMenu().checkSponsorsButton();
+//    }
+//
+//        @Test
+//    public void TCaseExhibitorsPage() throws MalformedURLException, NullPointerException, InterruptedException {
+//        System.out.println("Testing Exhibitors page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().checkExhibitorsButton();
+//
 //    }
 
 //    @Test
@@ -80,13 +88,7 @@ public class MasterTest {
 //
 //    }
 
-//    @Test
-//    public void TCaseExhibitorsPage() throws MalformedURLException, NullPointerException {
-//        System.out.println("Testing Map page");
-//        driver = new SideMenu().openMapPage();
-//        driver = new MapPage().checkPageTitle();
-//
-//    }
+
 
 //    @Test
 //    public void TCaseMapPage() throws MalformedURLException, NullPointerException {

@@ -2,6 +2,8 @@ package pages;
 
 import io.appium.java_client.android.AndroidDriver;
 
+import java.net.MalformedURLException;
+
 import static pages.PageTitles.ExpExhibitorsPageTitle;
 import static scenarios.MasterTest.driver;
 
@@ -25,12 +27,12 @@ public class ExhibitorsPage {
     }
     //check search
 
-//    public AndroidDriver testExhibitorsPage() throws NullPointerException, MalformedURLException, InterruptedException {
-//
-//        driver = new SearchRoutine().searchRoutineExhibitors();
-//
-//        return driver;
-//    }
+    public AndroidDriver testExhibitorsPage() throws NullPointerException, MalformedURLException, InterruptedException {
+
+        driver = new SearchRoutine().searchExhibitors();
+
+        return driver;
+    }
 
 //check menu (highlight)
 

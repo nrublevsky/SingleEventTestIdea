@@ -67,10 +67,12 @@ public class SideMenu {
     public AndroidDriver checkFeedback() throws MalformedURLException, NullPointerException, InterruptedException{
 
         WebDriverWait wait = new WebDriverWait(driver,15);
-
+        List<MobileElement> alertTitle = driver.findElements(By.id("alertTitle"));
+        boolean alertTitlePresent = alertTitle.isEmpty();
         String feedbackText = "Your event is super dooper, thanks!";
-        if (driver.findElementById("alertTitle").isDisplayed()) {
+        if (alertTitlePresent != true){
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alertTitle")));
+            System.out.println(driver.getContextHandles());
             System.out.println("Here's feedback window");
             driver.findElementById("feedbackRatingBar").click();
             driver.findElementById("feedbackEditText").sendKeys(feedbackText);
@@ -80,7 +82,6 @@ public class SideMenu {
 
             return driver;
         }
-        driver.context("NATIVE_APP");
         return driver;
     }
 
@@ -94,8 +95,14 @@ public class SideMenu {
         return driver;
     }
 
-    public AndroidDriver checkAboutButton() throws NullPointerException, InterruptedException, MalformedURLException {
+    public AndroidDriver checkAboutButton() throws NullPointerException, InterruptedException, MalformedURLException, ClassCastException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
+//        TouchAction action = new TouchAction(driver);
+//        action.(10, 10);
+//        action.move(10,20);
+//        action.perform();
+
+
 
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
@@ -165,7 +172,7 @@ public class SideMenu {
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new ExhibitorsPage().checkPageTitle();
-                driver = new TalksPage().testTalksPage();
+                driver = new ExhibitorsPage().testExhibitorsPage();
                 System.out.println("Checked Exhibitors page and Search");
                 break;
             }
