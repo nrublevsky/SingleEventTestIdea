@@ -1,11 +1,12 @@
 package pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import scenarios.ConfigsAndTexts;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -38,25 +39,21 @@ public class SideMenu {
 //    MobileElement MenuButton = (MobileElement) driver.findElementByAccessibilityId("Open navigation drawer");
 
     //    check open menu
-    public AndroidDriver openMenu() throws NullPointerException, InterruptedException {
-        System.out.println(driver.getContext());
+    public AppiumDriver openMenu() throws NullPointerException, InterruptedException {
         driver.findElementByAccessibilityId("Open navigation drawer").click();
         System.out.println("Opened Menu");
-//        Thread.sleep(15000);
         return driver;
     }
 
-    public AndroidDriver checkEventName() throws NullPointerException,MalformedURLException{
+    public AppiumDriver checkEventNamePresent() throws NullPointerException, MalformedURLException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView")));
         String ActEventName = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView")).getText();
-        String ExpEventName = new ConfigsAndTexts().setExpEventName();
         System.out.println(ActEventName);
-        System.out.println(ExpEventName);
 
-        if (ActEventName.equals(ExpEventName)) {
-            System.out.println("Event name is correct: " + ActEventName);
+        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView")).isDisplayed()) {
+            System.out.println("Event name is : " + ActEventName);
         } else {
             System.out.println("!!! Something is wrong");
         }
@@ -64,29 +61,28 @@ public class SideMenu {
         return driver;
     }
 
-    public AndroidDriver checkFeedback() throws MalformedURLException, NullPointerException, InterruptedException{
+    public AppiumDriver checkFeedback() throws MalformedURLException, NullPointerException, InterruptedException {
 
-        WebDriverWait wait = new WebDriverWait(driver,15);
+        WebDriverWait wait = new WebDriverWait(driver, 15);
         List<MobileElement> alertTitle = driver.findElements(By.id("alertTitle"));
         boolean alertTitlePresent = alertTitle.isEmpty();
-        String feedbackText = "Your event is super dooper, thanks!";
-        if (alertTitlePresent != true){
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alertTitle")));
-            System.out.println(driver.getContextHandles());
-            System.out.println("Here's feedback window");
-            driver.findElementById("feedbackRatingBar").click();
-            driver.findElementById("feedbackEditText").sendKeys(feedbackText);
-            driver.findElementById("button2").click();
 
-            System.out.println(driver.getContext());
+        if (!alertTitlePresent) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alertTitle")));
+            System.out.println("Here's feedback window");
+            driver.findElementById("button1").click();
 
             return driver;
         }
         return driver;
     }
 
-    public AndroidDriver checkMenuNames() throws NullPointerException, InterruptedException {
+    public AppiumDriver checkMenuNames() throws NullPointerException, InterruptedException {
+        TouchAction action = new TouchAction(driver).press(PointOption.point(482, 1700)).moveTo(PointOption.point(442, 1400)).release();
+
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
+        action.perform();
+        menuButtonsPresentList.addAll(driver.findElements(By.id("textTextView")));
         System.out.println("Here are buttons that are present in menu:");
         for (MobileElement element : menuButtonsPresentList) {
             System.out.println(element.getText());
@@ -95,34 +91,36 @@ public class SideMenu {
         return driver;
     }
 
-    public AndroidDriver checkAboutButton() throws NullPointerException, InterruptedException, MalformedURLException, ClassCastException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-//        TouchAction action = new TouchAction(driver);
-//        action.(10, 10);
-//        action.move(10,20);
-//        action.perform();
+    public AppiumDriver openAboutPage() throws NullPointerException, InterruptedException, MalformedURLException, ClassCastException {
 
-
+        TouchAction action = new TouchAction(driver).press(PointOption.point(482, 1703)).moveTo(PointOption.point(499, 1177)).release();
+        action.perform();
 
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
             String buttonName = element.getText();
             if (ExpAboutPageTitle.equals(buttonName)) {
-                System.out.println("Checking About page");
+                System.out.println("Opening About page");
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new AboutPage().checkPageTitle();
-                driver = new AboutPage().testAboutPage();
-                System.out.println("Checked About page");
+                System.out.println("Opened About page");
                 break;
             }
         }
+
         return driver;
     }
 
-    public AndroidDriver checkTalksButton() throws NullPointerException, InterruptedException, MalformedURLException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+    public AppiumDriver checkAboutPage() throws NullPointerException, InterruptedException, MalformedURLException, ClassCastException {
 
+        driver = new AboutPage().testAboutPage();
+        System.out.println("Checked About page");
+
+        return driver;
+    }
+
+    public AppiumDriver openTalksPage() throws NullPointerException, InterruptedException, MalformedURLException, ClassCastException {
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
             String buttonName = element.getText();
@@ -131,18 +129,22 @@ public class SideMenu {
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new TalksPage().checkPageTitle();
-                driver = new TalksPage().testTalksPage();
-                System.out.println("Checked Talks page and Search");
+                System.out.println("Opened Talks page");
                 break;
             }
-
         }
         return driver;
     }
 
-    public AndroidDriver checkAgendaButton() throws NullPointerException, InterruptedException, MalformedURLException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+    public AppiumDriver checkTalksPage() throws NullPointerException, InterruptedException, MalformedURLException {
 
+        driver = new TalksPage().testTalksPage();
+        System.out.println("Checked Talks page and Search");
+
+        return driver;
+    }
+
+    public AppiumDriver openAgendaPage() throws NullPointerException, InterruptedException, MalformedURLException {
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
             String buttonName = element.getText();
@@ -151,18 +153,24 @@ public class SideMenu {
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new AgendaPage().checkPageTitle();
-                // _________Fill in_____________
-                System.out.println("Checked Agenda page");
+                System.out.println("Opened Agenda page");
                 break;
             }
-
         }
+
         return driver;
     }
 
+    public AppiumDriver checkAgendaButton() throws NullPointerException, InterruptedException, MalformedURLException {
 
-    public AndroidDriver checkExhibitorsButton() throws NullPointerException, InterruptedException, MalformedURLException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        driver = new SideMenu().openAgendaPage();
+        driver = new AgendaPage().testAgendaPage();
+        System.out.println("Checked Agenda page");
+
+        return driver;
+    }
+
+    public AppiumDriver openExhibitorsPage() throws NullPointerException, InterruptedException, MalformedURLException {
 
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
@@ -172,17 +180,22 @@ public class SideMenu {
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new ExhibitorsPage().checkPageTitle();
-                driver = new ExhibitorsPage().testExhibitorsPage();
-                System.out.println("Checked Exhibitors page and Search");
                 break;
             }
-
         }
         return driver;
     }
 
-    public AndroidDriver checkSpeakersButton() throws NullPointerException, InterruptedException, MalformedURLException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+    public AppiumDriver checkExhibitorsPage() throws NullPointerException, InterruptedException, MalformedURLException {
+
+        driver = new SideMenu().openExhibitorsPage();
+        driver = new ExhibitorsPage().testExhibitorsPage();
+        System.out.println("Checked Exhibitors page and Search");
+
+        return driver;
+    }
+
+    public AppiumDriver openSpeakersPage() throws NullPointerException, InterruptedException, ClassCastException, MalformedURLException {
 
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
@@ -192,17 +205,23 @@ public class SideMenu {
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new SpeakersPage().checkPageTitle();
-                driver = new SpeakersPage().testSpeakersPage();
-                System.out.println("Checked Speakers page and Search");
                 break;
             }
-
         }
         return driver;
     }
 
-    public AndroidDriver checkSponsorsButton() throws NullPointerException, InterruptedException, MalformedURLException {
+    public AppiumDriver checkSpeakersPage() throws NullPointerException, InterruptedException, MalformedURLException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
+
+        driver = new SideMenu().openSpeakersPage();
+        driver = new SpeakersPage().testSpeakersPage();
+        System.out.println("Checked Speakers page and Search");
+
+        return driver;
+    }
+
+    public AppiumDriver openSponsorsPage() throws NullPointerException, MalformedURLException, InterruptedException {
 
         List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
         for (MobileElement element : menuButtonsPresentList) {
@@ -212,23 +231,47 @@ public class SideMenu {
                 element.click();
                 driver = new SideMenu().checkFeedback();
                 driver = new SponsorsPage().checkPageTitle();
-                driver = new SponsorsPage().testSponsorsPage();
-                System.out.println("Checked Speakers page and Search");
                 break;
             }
-
         }
         return driver;
     }
-//
-//    //exhibitors
-//    public AndroidDriver openExhibitorsPage() throws NullPointerException {
-//
-//        driver.findElement(By.xpath("0")).click();
-//        System.out.println("Opened Exhibitors Page");
-//
-//        return driver;
-//    }
+
+    public AppiumDriver checkSponsorsPage() throws NullPointerException, InterruptedException, MalformedURLException {
+
+        driver = new SideMenu().openSponsorsPage();
+        driver = new SponsorsPage().testSponsorsPage();
+        System.out.println("Checked Speakers page and Search");
+
+        return driver;
+    }
+
+
+    public AppiumDriver openSchedulePage() throws NullPointerException, MalformedURLException, InterruptedException {
+
+        List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
+        for (MobileElement element : menuButtonsPresentList) {
+            String buttonName = element.getText();
+            if (ExpSchedulePageTitle.equals(buttonName)) {
+                System.out.println("Checking Sponsors page");
+                element.click();
+                driver = new SideMenu().checkFeedback();
+                driver = new SchedulePage().checkPageTitle();
+                break;
+            }
+        }
+        return driver;
+    }
+
+    public AppiumDriver checkSchedulePage() throws NullPointerException, InterruptedException, MalformedURLException {
+
+        driver = new SideMenu().openSchedulePage();
+        driver = new SchedulePage().testSchedulePage();
+        System.out.println("Checked Speakers page and Search");
+
+        return driver;
+    }
+
 //
 //    //map
 //    public AndroidDriver openMapPage() throws NullPointerException {
@@ -285,80 +328,7 @@ public class SideMenu {
 //        return driver;
 //    }
 
-//    public AndroidDriver checkMenuButtonsPresent() throws NullPointerException {
-////__________About_____
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[7]")).isDisplayed()) {
-//            AboutPagePresent = true;
-//            System.out.println("Found About button");
-//        } else {
-//            System.out.println("!!! About button is missing");
-//        }
-////__________Agenda____
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[2]")).isDisplayed()) {
-//            AgendaPagePresent = true;
-//            System.out.println("Found Agenda button");
-//        } else {
-//            System.out.println("Agenda button is missing");
-//        }
-////__________Exhibitors
-//        if (driver.findElement(By.xpath("0")).isDisplayed()) {
-//            ExhibitorsPagePresent = true;
-//            System.out.println("Found Exhibitors button");
-//        } else {
-//            System.out.println("Exhibitors button is missing");
-//        }
-////__________Map______
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[5]")).isDisplayed()) {
-//            MapPagePresent = true;
-//            System.out.println("Found Map button");
-//        } else {
-//            System.out.println("Map button is missing");
-//        }
-////__________News_____
-//        if (driver.findElement(By.xpath("0")).isDisplayed()) {
-//            NewsPagePresent = true;
-//            System.out.println("Found News button");
-//        } else {
-//            System.out.println("News button is missing");
-//        }
-////__________Schedule_
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[1]")).isDisplayed()) {
-//            SchedulePagePresent = true;
-//            System.out.println("Found Schedule button");
-//        } else {
-//            System.out.println("Schedule button is missing");
-//        }
-////__________Speakers_
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[4]")).isDisplayed()) {
-//            SpeakersPagePresent = true;
-//            System.out.println("Found Speakers button");
-//        } else {
-//            System.out.println("Speakers button is missing");
-//        }
-////__________Sponsors_
-//        if (driver.findElement(By.xpath("0")).isDisplayed()) {
-//            SponsorsPagePresent = true;
-//            System.out.println("Found Sponsors button");
-//        } else {
-//            System.out.println("Sponsors button is missing");
-//        }
-////__________Talks____
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[3]")).isDisplayed()) {
-//            TalksPagePresent = true;
-//            System.out.println("Found Talks button");
-//        } else {
-//            System.out.println("Talks button is missing");
-//        }
-////__________Twitter__
-//        if (driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.GridView/android.widget.LinearLayout[6]")).isDisplayed()) {
-//            TwitterPagePresent = true;
-//            System.out.println("Found Twitter button");
-//        } else {
-//            System.out.println("Twitter button is missing");
-//        }
-//        System.out.println("All checked");
-//        return driver;
-//    }
+
 
     //    check every button
 //    public AndroidDriver openAboutPage() throws NullPointerException {

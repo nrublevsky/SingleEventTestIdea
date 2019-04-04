@@ -1,6 +1,6 @@
 package scenarios;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 
 public class MasterTest {
 
-    public static AndroidDriver driver;
+    public static AppiumDriver driver;
 
     @Before
     public void init() throws MalformedURLException {
@@ -19,27 +19,29 @@ public class MasterTest {
     }
 
 
-//    @Test
+//        @Test
 //    public void TCaseMenu() throws MalformedURLException, NullPointerException, InterruptedException {
 //        System.out.println("Testing Menu");
 //        driver = new SideMenu().openMenu();
-//        driver = new SideMenu().checkEventName();
+//        driver = new SideMenu().checkEventNamePresent();
 //        System.out.println("Checking Menu buttons present");
 //        driver = new SideMenu().checkMenuNames();
 //    }
+////
+//    @Test
+//    public void TCaseAboutPage() throws NullPointerException, InterruptedException, MalformedURLException {
+//        System.out.println("Checking About page");
+//        driver = new SideMenu().openMenu();
+//        driver = new SideMenu().openAboutPage();
+//        driver = new SideMenu().checkAboutPage();
+//    }
 //
-    @Test
-    public void TCaseAboutPage() throws NullPointerException, InterruptedException, MalformedURLException {
-        System.out.println("Checking About page");
-        driver = new SideMenu().openMenu();
-        driver = new SideMenu().checkAboutButton();
-    }
-
 //    @Test
 //    public void TCaseTalksPage() throws MalformedURLException, NullPointerException, InterruptedException {
 //        System.out.println("Testing Talks page");
 //        driver = new SideMenu().openMenu();
-//        driver = new SideMenu().checkTalksButton();
+//        driver = new SideMenu().openTalksPage();
+//        driver = new SideMenu().checkTalksPage();
 //    }
 //
 //    @Test
@@ -64,6 +66,14 @@ public class MasterTest {
 //
 //    }
 
+    @Test
+    public void TCaseAgendaPage() throws MalformedURLException, NullPointerException, InterruptedException {
+        System.out.println("Testing Map page");
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().checkAgendaButton();
+
+    }
+
 //    @Test
 //    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
 //        System.out.println("Testing Map page");
@@ -80,13 +90,6 @@ public class MasterTest {
 //
 //    }
 
-//    @Test
-//    public void TCaseAgendaPage() throws MalformedURLException, NullPointerException {
-//        System.out.println("Testing Map page");
-//        driver = new SideMenu().openMapPage();
-//        driver = new MapPage().checkPageTitle();
-//
-//    }
 
 
 

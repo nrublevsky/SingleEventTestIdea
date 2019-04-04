@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
@@ -16,7 +16,7 @@ public class TalksPage {
 
 //check title
 
-    public AndroidDriver checkPageTitle() throws NullPointerException {
+    public AppiumDriver checkPageTitle() throws NullPointerException {
 
         String ActTalksPageTitle = new PageTitles().getActTalksPageTitle();
 
@@ -30,7 +30,7 @@ public class TalksPage {
     }
 //check search
 
-    public AndroidDriver checkSearchTalks() throws NullPointerException {
+    public AppiumDriver checkSearchTalks() throws NullPointerException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
 //scroll page
 //        TouchActions action = new TouchActions(driver);
@@ -46,7 +46,7 @@ public class TalksPage {
 
 //check leaving
 
-    public AndroidDriver testTalksPage() throws NullPointerException, MalformedURLException {
+    public AppiumDriver testTalksPage() throws NullPointerException, MalformedURLException {
 
 
         driver = new TalksPage().checkSearchTalks();

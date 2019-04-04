@@ -1,8 +1,7 @@
 package pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,8 +14,18 @@ import static scenarios.MasterTest.driver;
 
 public class SearchRoutine {
 
+    public AppiumDriver openSearch()throws NullPointerException{
+        WebDriverWait wait = new WebDriverWait(driver, 15);
 
-    public AndroidDriver searchTalks() throws NullPointerException {
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("action_search")));
+        driver.findElement(By.id("action_search")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("search_src_text")));
+        driver.findElement(By.id("search_src_text")).click();
+
+        return driver;
+    }
+
+    public AppiumDriver searchTalks() throws NullPointerException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
 
@@ -33,7 +42,7 @@ public class SearchRoutine {
         System.out.println("Search routine for '" + titleCorrect + "'");
 
 //create TalkTitleCut and TalkTitleWrong
-        String titleCut = titleCorrect.substring(0, (titleCorrect.length()/2));
+        String titleCut = titleCorrect.substring(0, (titleCorrect.length() / 2));
         String mess = "iu3h4iuth";
         String titleIncorrect = titleCut.concat(mess);
 
@@ -41,10 +50,7 @@ public class SearchRoutine {
         driver.findElement(By.id("closeDetailsButton")).click();
 
 //tap search field
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("action_search")));
-        driver.findElement(By.id("action_search")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("search_src_text")));
-        driver.findElement(By.id("search_src_text")).click();
+        driver = new SearchRoutine().openSearch();
 
 //__________Checking_with_Title_Correct___________________________________
         System.out.println("Checking search with correct query");
@@ -105,7 +111,7 @@ public class SearchRoutine {
         if (searchResults3.isEmpty()) {
             System.out.println("Correct results for incorrect search query");
         } else {
-            System.out.println("!!! Seomething is wrong");
+            System.out.println("!!! Something is wrong");
         }
 
 //tap search field
@@ -113,14 +119,13 @@ public class SearchRoutine {
 
 //clear search field
         driver.findElement(By.id("search_src_text")).clear();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
+        driver.navigate().back();
 
         return driver;
     }
 
 
-
-    public AndroidDriver searchSpeakers() throws NullPointerException {
+    public AppiumDriver searchSpeakers() throws NullPointerException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
 
@@ -137,7 +142,7 @@ public class SearchRoutine {
         System.out.println("Search routine for '" + titleCorrect + "'");
 
 //create TalkTitleCut and TalkTitleWrong
-        String titleCut = titleCorrect.substring(0, (titleCorrect.length()/2));
+        String titleCut = titleCorrect.substring(0, (titleCorrect.length() / 2));
         String mess = "iu3h4iuth";
         String titleIncorrect = titleCut.concat(mess);
 
@@ -145,10 +150,7 @@ public class SearchRoutine {
         driver.findElement(By.id("closeDetailsButton")).click();
 
 //tap search field
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("action_search")));
-        driver.findElement(By.id("action_search")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("search_src_text")));
-        driver.findElement(By.id("search_src_text")).click();
+        driver = new SearchRoutine().openSearch();
 
 //__________Checking_with_Title_Correct___________________________________
         System.out.println("Checking search with correct query");
@@ -217,12 +219,12 @@ public class SearchRoutine {
 
 //clear search field
         driver.findElement(By.id("search_src_text")).clear();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
+        driver.navigate().back();
 
         return driver;
     }
 
-    public AndroidDriver searchSponsors() throws NullPointerException {
+    public AppiumDriver searchSponsors() throws NullPointerException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
 
@@ -239,7 +241,7 @@ public class SearchRoutine {
         System.out.println("Search routine for '" + titleCorrect + "'");
 
 //create TalkTitleCut and TalkTitleWrong
-        String titleCut = titleCorrect.substring(0, (titleCorrect.length()/2));
+        String titleCut = titleCorrect.substring(0, (titleCorrect.length() / 2));
         String mess = "iu3h4iuth";
         String titleIncorrect = titleCut.concat(mess);
 
@@ -247,10 +249,7 @@ public class SearchRoutine {
         driver.findElement(By.id("closeDetailsButton")).click();
 
 //tap search field
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("action_search")));
-        driver.findElement(By.id("action_search")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("search_src_text")));
-        driver.findElement(By.id("search_src_text")).click();
+        driver = new SearchRoutine().openSearch();
 
 //__________Checking_with_Title_Correct___________________________________
         System.out.println("Checking search with correct query");
@@ -319,12 +318,12 @@ public class SearchRoutine {
 
 //clear search field
         driver.findElement(By.id("search_src_text")).clear();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
+        driver.navigate().back();
 
         return driver;
     }
 
-    public AndroidDriver searchExhibitors() throws NullPointerException {
+    public AppiumDriver searchExhibitors() throws NullPointerException {
         WebDriverWait wait = new WebDriverWait(driver, 15);
 
 
@@ -341,7 +340,7 @@ public class SearchRoutine {
         System.out.println("Search routine for '" + titleCorrect + "'");
 
 //create TalkTitleCut and TalkTitleWrong
-        String titleCut = titleCorrect.substring(0, (titleCorrect.length()/2));
+        String titleCut = titleCorrect.substring(0, (titleCorrect.length() / 2));
         String mess = "iu3h4iuth";
         String titleIncorrect = titleCut.concat(mess);
 
@@ -349,10 +348,7 @@ public class SearchRoutine {
         driver.findElement(By.id("closeDetailsButton")).click();
 
 //tap search field
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("action_search")));
-        driver.findElement(By.id("action_search")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("search_src_text")));
-        driver.findElement(By.id("search_src_text")).click();
+        driver = new SearchRoutine().openSearch();
 
 //__________Checking_with_Title_Correct___________________________________
         System.out.println("Checking search with correct query");
@@ -421,7 +417,7 @@ public class SearchRoutine {
 
 //clear search field
         driver.findElement(By.id("search_src_text")).clear();
-        driver.pressKeyCode(AndroidKeyCode.BACK);
+        driver.navigate().back();
 
         return driver;
     }

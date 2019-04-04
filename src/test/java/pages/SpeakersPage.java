@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 
 import java.net.MalformedURLException;
 
@@ -15,7 +15,7 @@ public class SpeakersPage {
 
 //  check title
 
-    public AndroidDriver checkPageTitle() throws NullPointerException {
+    public AppiumDriver checkPageTitle() throws NullPointerException {
 
         String ActSpeakersPageTitle = new PageTitles().getActSpeakersPageTitle();
 
@@ -29,15 +29,12 @@ public class SpeakersPage {
     }
 
     //  check search
-    public AndroidDriver testSpeakersPage() throws NullPointerException, MalformedURLException, InterruptedException {
+    public AppiumDriver testSpeakersPage() throws NullPointerException, MalformedURLException, InterruptedException {
 
         driver = new SearchRoutine().searchSpeakers();
 
         return driver;
     }
-
-
-
 
 
 //  check opening speaker

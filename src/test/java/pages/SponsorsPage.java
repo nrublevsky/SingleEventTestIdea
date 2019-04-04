@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 
 import java.net.MalformedURLException;
 
@@ -19,7 +19,7 @@ public class SponsorsPage {
 
 //check title
 
-    public AndroidDriver checkPageTitle() throws NullPointerException {
+    public AppiumDriver checkPageTitle() throws NullPointerException {
 
         String ActSponsorsPageTitle = new PageTitles().getActSponsorsPageTitle();
 
@@ -34,7 +34,7 @@ public class SponsorsPage {
 
 
 //check search
-public AndroidDriver testSponsorsPage() throws NullPointerException, MalformedURLException, InterruptedException {
+public AppiumDriver testSponsorsPage() throws NullPointerException, MalformedURLException, InterruptedException {
 
     driver = new SearchRoutine().searchSponsors();
 

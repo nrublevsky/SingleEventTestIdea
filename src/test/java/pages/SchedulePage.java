@@ -1,6 +1,8 @@
 package pages;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
+
+import java.net.MalformedURLException;
 
 import static pages.PageTitles.ExpSchedulePageTitle;
 import static scenarios.MasterTest.driver;
@@ -11,7 +13,7 @@ public class SchedulePage {
 //already in Side menu
 
     //check title
-    public AndroidDriver checkPageTitle() throws NullPointerException {
+    public AppiumDriver checkPageTitle() throws NullPointerException {
 
         String ActSchedulePageTitle = new PageTitles().getActSchedulePageTitle();
 
@@ -30,5 +32,12 @@ public class SchedulePage {
 //check dates (switching)
 
 //check opening talk
+
+
+    public AppiumDriver testSchedulePage() throws NullPointerException, MalformedURLException {
+
+        return driver;
+    }
+
 
 }

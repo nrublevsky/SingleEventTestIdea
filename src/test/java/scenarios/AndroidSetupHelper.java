@@ -1,5 +1,6 @@
 package scenarios;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,14 +12,14 @@ import java.net.URL;
 
 public class AndroidSetupHelper {
 
-    public AndroidDriver initSetup() throws MalformedURLException, NullPointerException {
+    public AppiumDriver initSetup() throws MalformedURLException, NullPointerException {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("deviceName", "Nexus 6");
         caps.setCapability("udid", "emulator-5554");
         caps.setCapability("platformName", "Android");
         caps.setCapability("platformVersion", "8.0");
-        caps.setCapability("appPackage", "com.rozdoum.eventor.lpmd2018");
+        caps.setCapability("appPackage", "com.rozdoum.eventor.newedu4ieftechinfocus");
         caps.setCapability("appActivity", "com.rozdoum.eventor.activities.SchedulerActivity");
 
 
@@ -45,8 +46,8 @@ public class AndroidSetupHelper {
         return driver;
     }
 
-    public AndroidDriver tearDown() throws MalformedURLException, NullPointerException {
-        AndroidDriver driver = MasterTest.driver;
+    public AppiumDriver tearDown() throws MalformedURLException, NullPointerException {
+        AppiumDriver driver = MasterTest.driver;
 
         System.out.println("This is routine after each test");
         System.out.println("Closing app");
