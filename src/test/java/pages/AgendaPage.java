@@ -102,28 +102,80 @@ public class AgendaPage {
         String agendaSwitcherEnabled = "Add to Agenda ON";
 
         while (agendaSwitcherState.equals(agendaSwitcherEnabled)){
-            driver.navigate().back();
-            driver = new AgendaPage().openSpeakerWithTalk();
-            driver = new AgendaPage().checkAgendaEnabledSpeakers();
+//            driver.navigate().back();
+//            driver = new AgendaPage().openSpeakerWithTalk();
+//            driver = new AgendaPage().checkAgendaEnabledSpeakers();
         }
+        return driver;
+    }
+
+    private AppiumDriver subToTalkInSpeaker(int speakerNum ,List<MobileElement> speakerItems, List<MobileElement> talksPresent) throws MalformedURLException, NullPointerException, InterruptedException {
+        int talkNum = 0;
+        if (talksPresent.size() > 1) {
+            while (talkNum < talksPresent.size()-1 ) {
+                talksPresent.get(talkNum).click();
+                String agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
+                String agendaSwitcherEnabled = "Add to Agenda ON";
+                if (!agendaSwitcherState.equals(agendaSwitcherEnabled)) {
+                    driver.findElement(By.id("addToAgendaSwitchCompat")).click();
+                    break;
+                } else {
+                    driver.navigate().back();
+                    talkNum++;
+                }
+            }
+        }
+        if (talksPresent.size() == 1) {
+            talksPresent.get(0).click();
+            String agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
+            String agendaSwitcherEnabled = "Add to Agenda ON";
+            if (!agendaSwitcherState.equals(agendaSwitcherEnabled)) {
+                driver.findElement(By.id("addToAgendaSwitchCompat")).click();
+            } else {
+                driver.navigate().back();
+                driver.navigate().back();
+                speakerNum++;
+            }
+        }
+
         return driver;
     }
 
     public AppiumDriver openSpeakerWithTalk() throws MalformedURLException, NullPointerException, InterruptedException {
         TouchAction action = new TouchAction(driver).press(PointOption.point(482, 1703)).moveTo(PointOption.point(499, 1500)).release();
-
-        List<MobileElement> speakerItems = driver.findElements(By.id("titleTextView"));
-        int i = new Random().nextInt(speakerItems.size()-1);
-        speakerItems.get(i).click();
-        List<MobileElement> talksPresent = driver.findElements(By.id("talkContainer"));
-        if (!talksPresent.isEmpty()){
-            i = new Random().nextInt(talksPresent.size());
-            talksPresent.get(i).click();
-        }else {
-            driver.navigate().back();
-            action.perform();
-            driver = new AgendaPage().openSpeakerWithTalk();
+        int speakerNum = 0;
+            //gather speakers and create speakersList
+            List<MobileElement> speakerItems = driver.findElements(By.id("titleTextView"));
+            //open speaker from list
+        while (speakerNum < speakerItems.size()-1) {
+            speakerItems.get(speakerNum).click();
+            //create talks list
+            List<MobileElement> talksPresent = driver.findElements(By.id("talkContainer"));
+            if (!talksPresent.isEmpty()) {
+                driver = new AgendaPage().subToTalkInSpeaker(speakerNum, speakerItems, talksPresent);
+                break;
+            }
+            if (talksPresent.isEmpty()) {
+                driver.navigate().back();
+                speakerNum++;
+            }
         }
+
+
+
+//        List<MobileElement> speakerItems = driver.findElements(By.id("titleTextView"));
+//        int i = new Random().nextInt(speakerItems.size()-1);
+//        speakerItems.get(i).click();
+//        List<MobileElement> talksPresent = driver.findElements(By.id("talkContainer"));
+//        if (!talksPresent.isEmpty()){
+//            i = new Random().nextInt(talksPresent.size());
+//            talksPresent.get(i).click();
+//        }else {
+//            driver.navigate().back();
+//            action.perform();
+//            driver = new AgendaPage().openSpeakerWithTalk();
+//        }
+
         return driver;
     }
 
@@ -139,10 +191,10 @@ public class AgendaPage {
         driver = new SideMenu().openSpeakersPage();
     //open speaker
         driver = new AgendaPage().openSpeakerWithTalk();
-        driver = new AgendaPage().checkAgendaEnabledSpeakers();
-    //click Add to Agenda
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("addToAgendaSwitchCompat")));
-        driver.findElement(By.id("addToAgendaSwitchCompat")).click();
+//        driver = new AgendaPage().checkAgendaEnabledSpeakers();
+//    //click Add to Agenda
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("addToAgendaSwitchCompat")));
+//        driver.findElement(By.id("addToAgendaSwitchCompat")).click();
     //get Talk name
         String talkName = driver.findElement(By.id("titleTextView")).getText();
     //open menu
@@ -169,7 +221,7 @@ public class AgendaPage {
         System.out.println();
 //check if already subscribed
         while (agendaSwitcherState.equals(agendaSwitcherEnabled)){
-            driver.findElement(By.id("closeDetailsButton")).click();
+            driver.navigate().back();
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             actionV.perform();
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
