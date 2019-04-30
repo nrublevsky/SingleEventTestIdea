@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+
 import static pages.PageTitles.ExpMapPageTitle;
 import static scenarios.MasterTest.driver;
 
@@ -31,6 +33,10 @@ public class MapPage {
         return driver;
     }
 
+    public AppiumDriver testMapPage() throws MalformedURLException{
+
+        return driver;
+    }
 //check menu (highlight)
 
 //check switching to plan/map if avail

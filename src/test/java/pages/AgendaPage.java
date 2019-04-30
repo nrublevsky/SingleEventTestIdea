@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import static pages.PageTitles.ExpAgendaPageTitle;
 import static scenarios.MasterTest.driver;
@@ -48,22 +49,21 @@ public class AgendaPage {
 
         System.out.println("Checking talk is present in Agenda page");
         List<MobileElement> talkItems = driver.findElements(By.id("talkTitle"));
-
         boolean talkPresent = false;
         while (!talkPresent) {
             for (MobileElement element : talkItems) {
-                if (!element.getText().equals(talkName)) {
-                    System.out.println(element.getText() + " != " + talkName);
-                }
                 if (element.getText().equals(talkName)) {
                     talkPresent = true;
                     System.out.println("Found " + talkName);
+                    break;
                 }
             }
-            action.perform();
-            talkItems = driver.findElements(By.id("talkTitle"));
+            if (!talkPresent){
+                    action.perform();
+                    talkItems.clear();
+                    talkItems = driver.findElements(By.id("talkTitle"));
+            }
         }
-
         return driver;
     }
 
@@ -98,9 +98,10 @@ public class AgendaPage {
 
     public AppiumDriver checkAgendaEnabledSpeakers()  throws MalformedURLException, NullPointerException, InterruptedException {
 
-        String agendaSwitcherEnabled = driver.findElement(By.id("addToAgendaSwitchCompat")).getAttribute("checked");
+        String agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
+        String agendaSwitcherEnabled = "Add to Agenda ON";
 
-        while (agendaSwitcherEnabled == "true"){
+        while (agendaSwitcherState.equals(agendaSwitcherEnabled)){
             driver.navigate().back();
             driver = new AgendaPage().openSpeakerWithTalk();
             driver = new AgendaPage().checkAgendaEnabledSpeakers();
@@ -158,20 +159,25 @@ public class AgendaPage {
 
     public AppiumDriver openTalkInSchedule()  throws MalformedURLException, NullPointerException, InterruptedException{
         TouchAction actionV = new TouchAction(driver).press(PointOption.point(482, 1703)).moveTo(PointOption.point(499, 1177)).release();
-        TouchAction actionH = new TouchAction(driver).press(PointOption.point(482, 1703)).moveTo(PointOption.point(250, 1703)).release();
-
+        TouchAction actionH = new TouchAction(driver).press(PointOption.point(682, 1703)).moveTo(PointOption.point(450, 1703)).release();
+//find talk
         List<MobileElement> talkItems = driver.findElements(By.id("talkView"));
-        int i = new Random().nextInt(talkItems.size()-1);
+        int i = new Random().nextInt(talkItems.size());
         talkItems.get(i).click();
         String agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
         String agendaSwitcherEnabled = "Add to Agenda ON";
         System.out.println();
+//check if already subscribed
         while (agendaSwitcherState.equals(agendaSwitcherEnabled)){
             driver.findElement(By.id("closeDetailsButton")).click();
-            actionH.perform();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            actionV.perform();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             talkItems.clear();
             talkItems = driver.findElements(By.id("talkView"));
+            i = new Random().nextInt(talkItems.size());
             talkItems.get(i).click();
+            agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
         }
 
         return driver;
@@ -231,13 +237,10 @@ public class AgendaPage {
     //unsubscribe talks until placeholder is displayed
         List<MobileElement> agendaTalks = driver.findElements(By.id("talkView"));
         while (!agendaTalks.isEmpty()) {
-            for (MobileElement element : agendaTalks) {
-                element.click();
-                driver.findElement(By.id("addToAgendaSwitchCompat")).click();
-                driver.findElement(By.id("closeDetailsButton")).click();
-            }
-            agendaTalks.clear();
-            agendaTalks.addAll(driver.findElements(By.id("talkView")));
+            agendaTalks.get(0).click();
+            driver.findElement(By.id("addToAgendaSwitchCompat")).click();
+            driver.findElement(By.id("closeDetailsButton")).click();
+            agendaTalks = driver.findElements(By.id("talkView"));
         }
         driver = new AgendaPage().checkAgendaPlaceholder();
         return driver;

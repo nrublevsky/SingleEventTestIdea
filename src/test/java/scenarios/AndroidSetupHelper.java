@@ -19,7 +19,7 @@ public class AndroidSetupHelper {
         caps.setCapability("udid", "emulator-5554");
         caps.setCapability("platformName", "Android");
         caps.setCapability("platformVersion", "8.0");
-        caps.setCapability("appPackage", "com.rozdoum.eventor.newedu4ieftechinfocus");
+        caps.setCapability("appPackage", "com.rozdoum.eventor.lpmd2018");
         caps.setCapability("appActivity", "com.rozdoum.eventor.activities.SchedulerActivity");
 
 
