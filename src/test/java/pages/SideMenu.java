@@ -304,7 +304,7 @@ public class SideMenu {
 
         driver = new SideMenu().openMapPage();
         driver = new MapPage().testMapPage();
-        System.out.println("Checked Speakers page and Search");
+        System.out.println("Checked Map page and Search");
 
         return driver;
     }

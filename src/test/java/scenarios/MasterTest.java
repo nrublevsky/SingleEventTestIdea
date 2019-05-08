@@ -78,13 +78,14 @@ public class MasterTest {
 
     }
 
-//    @Test
-//    public void TCaseMapPage() throws MalformedURLException, NullPointerException {
-//        System.out.println("Testing Map page");
-//        driver = new SideMenu().openMapPage();
-//        driver = new MapPage().checkPageTitle();
-//
-//    }
+    @Test
+    public void TCaseMapPage() throws MalformedURLException, NullPointerException, InterruptedException {
+        System.out.println("Testing Map page");
+        driver = new SideMenu().openMenu();
+        driver = new SideMenu().openMapPage();
+        driver = new MapPage().testMapPage();
+
+    }
 
 //    @Test
 //    public void TCaseNewsPage() throws MalformedURLException, NullPointerException {
