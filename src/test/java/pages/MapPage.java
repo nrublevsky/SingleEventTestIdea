@@ -88,6 +88,7 @@ public class MapPage {
 
         return driver;
     }
+
 //check menu (highlight)
 
 //check switching to plan/map if avail

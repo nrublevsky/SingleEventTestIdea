@@ -310,16 +310,27 @@ public class SideMenu {
     }
 
 
-//
-//    //news
-//    public AndroidDriver openNewsPage() throws NullPointerException {
-//
-//        driver.findElement(By.xpath(" ")).click();
-//        System.out.println("Opened News Page");
-//
-//        return driver;
-//    }
-//
+    public AppiumDriver openNewsPage() throws NullPointerException, MalformedURLException, InterruptedException {
+
+        List<MobileElement> menuButtonsPresentList = driver.findElements(By.id("textTextView"));
+        boolean buttonPresent = false;
+        for (MobileElement element : menuButtonsPresentList) {
+            String buttonName = element.getText();
+            if (ExpNewsPageTitle.equals(buttonName)) {
+                buttonPresent = true;
+                System.out.println("Opening News page");
+                element.click();
+                driver = new SideMenu().checkFeedback();
+                driver = new NewsPage().checkPageTitle();
+                System.out.println("Opened News page");
+                break;
+            }
+        }if (!buttonPresent) {
+            System.out.println("There's no News page");
+            driver.quit();
+        }
+        return driver;
+    }
 //
 //    //talks
 //    public AndroidDriver openTalksPage() throws NullPointerException {
