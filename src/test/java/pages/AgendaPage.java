@@ -77,7 +77,7 @@ public class AgendaPage {
         driver = new SideMenu().openTalksPage();
     //open talk
         List<MobileElement> talkItems = driver.findElements(By.id("talkContainer"));
-        int i = new Random().nextInt(talkItems.size() - 1);
+        int i = new  Random().nextInt(talkItems.size()-1);
         talkItems.get(i).click();
     //get Talk name
         String talkName = driver.findElement(By.id("titleTextView")).getText();
@@ -215,38 +215,7 @@ public class AgendaPage {
         return driver;
     }
 
-//    public AppiumDriver subToTalkInSchedule(Boolean success, List<MobileElement> talkItems) throws MalformedURLException, NullPointerException, InterruptedException{
-//        TouchAction actionV = new TouchAction(driver).press(PointOption.point(482, 1503)).moveTo(PointOption.point(482, 1303)).release();
-//        TouchAction actionH = new TouchAction(driver).press(PointOption.point(782, 1703)).moveTo(PointOption.point(450, 1703)).release();
-//
-//        if (talkItems.size()==1){
-//            talkItems.get(0).click();
-//            String agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
-//            String agendaSwitcherEnabled = "Add to Agenda ON";
-//            if (!agendaSwitcherState.equals(agendaSwitcherEnabled)) {
-//                driver.findElement(By.id("addToAgendaSwitchCompat")).click();
-//            }else {
-//                driver.navigate().back();
-//                driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//                actionV.perform();
-//                actionH.perform();
-//            }
-//        }
-//        if (talkItems.size()>1){
-//            for (MobileElement element : talkItems) {
-//                element.click();
-//                String agendaSwitcherState = driver.findElement(By.id("addToAgendaSwitchCompat")).getText();
-//                String agendaSwitcherEnabled = "Add to Agenda ON";
-//                if (!agendaSwitcherState.equals(agendaSwitcherEnabled)) {
-//                    driver.findElement(By.id("addToAgendaSwitchCompat")).click();
-//                    break;
-//                } else {
-//                    driver.navigate().back();
-//                }
-//            }
-//        }
-//        return driver;
-//    }
+
 
     public AppiumDriver openTalkInSchedule()  throws MalformedURLException, NullPointerException, InterruptedException{
         TouchAction actionV = new TouchAction(driver).press(PointOption.point(482, 1503)).moveTo(PointOption.point(482, 1303)).release();
